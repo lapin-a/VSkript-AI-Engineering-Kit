@@ -48,9 +48,12 @@ VSkript-AI-Engineering-Kit/
 ├── STYLE_GUIDE.md
 ├── PROMPT_STANDARD.md
 ├── REPORT_STANDARD.md
+├── QUALITY_GATE.md
 ├── DIRECTORY.md
 ├── TEMPLATE_LIST.md
 ├── ROADMAP.md
+├── GLOSSARY.md
+├── AI_GUIDELINES.md
 ├── LICENSE
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md

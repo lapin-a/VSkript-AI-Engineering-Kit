@@ -286,8 +286,8 @@ VSkript 외 프로젝트에서도 활용할 수 있어야 한다.
 - Rules
 - Workflow
 - Evidence Policy
-- Verification Criteria
-- Quality Checklist
+- Verification
+- Checklist
 - Expected Result
 
 ---
@@ -315,6 +315,7 @@ VSkript 외 프로젝트에서도 활용할 수 있어야 한다.
 | PARTIALLY VERIFIED | 일부만 확인됨 |
 | NEEDS RUNTIME TEST | 실행 환경에서 확인 필요 |
 | ISSUE | 문제 발견 |
+| NOT APPLICABLE | 해당 없음 |
 
 모든 판정에는 근거를 포함해야 한다.
 

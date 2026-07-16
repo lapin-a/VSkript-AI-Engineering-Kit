@@ -163,12 +163,14 @@ Workflow
 1. Purpose
 2. Scope
 3. Role
-4. Skills
+4. Required Skills
 5. Input
 6. Rules
 7. Workflow
-8. Output
-9. Checklist
+8. Evidence Policy
+9. Verification
+10. Output
+11. Checklist
 
 ---
 
@@ -179,9 +181,9 @@ Workflow
 1. Executive Summary
 2. Findings
 3. Evidence
-4. Risk
-5. Recommendation
-6. Conclusion
+4. Risks
+5. Recommendations
+6. Next Steps
 
 ---
 

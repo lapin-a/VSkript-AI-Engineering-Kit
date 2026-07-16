@@ -214,6 +214,7 @@
 | PARTIALLY VERIFIED | 일부 확인 |
 | NEEDS RUNTIME TEST | 실행 환경 필요 |
 | ISSUE | 문제 발견 |
+| NOT APPLICABLE | 해당 없음 |
 
 ---
 
@@ -337,31 +338,13 @@ AI는 다음 행동을 수행한다.
 우선순위
 
 1. RULES.md
-
-↓
-
 2. PROJECT.md
-
-↓
-
 3. REQUIREMENTS.md
-
-↓
-
 4. WORKFLOW.md
-
-↓
-
-5. Prompt Files
-
-↓
-
-6. Templates
-
-↓
-
-7. Reports
-
+5. PROMPT_STANDARD.md / REPORT_STANDARD.md / STYLE_GUIDE.md / QUALITY_GATE.md / DIRECTORY.md / TEMPLATE_LIST.md / GLOSSARY.md
+6. Prompt Files
+7. Templates
+8. Reports
 ---
 
 # 14. Definition of Success

@@ -52,6 +52,9 @@ Version: 1.0
 | ROADMAP.md | 개발 계획 | Required |
 | GLOSSARY.md | 용어 사전 | Recommended |
 | QUALITY_GATE.md | 품질 기준 | Required |
+| AI_GUIDELINES.md | AI 행동 규칙 | Required |
+| CONTRIBUTING.md | 기여 절차 | Required |
+| CHANGELOG.md | 변경 이력 | Required |
 
 ---
 
@@ -168,17 +171,10 @@ Version: 1.0
 향후 추가 예정
 
 ## AI
-
-- AI_Guidelines.md
 - AI_Behavior.md
 - AI_Limitations.md
 
----
-
 ## Documentation
-
-- CONTRIBUTING.md
-- CHANGELOG.md
 - RELEASE_NOTE.md
 
 ---

@@ -237,6 +237,7 @@ Priority
 | PARTIALLY VERIFIED | 일부 확인 |
 | NEEDS RUNTIME TEST | 실행 환경 필요 |
 | ISSUE | 문제 발견 |
+| NOT APPLICABLE | 해당 없음 |
 
 ---
 
