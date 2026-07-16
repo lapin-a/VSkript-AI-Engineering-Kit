@@ -253,6 +253,22 @@ Final Report
 11_Refactoring.md
 ```
 
+## Development Prompts (Conditional)
+
+### Purpose
+
+프로젝트 특성에 따라 선택적으로 수행하는 개발 Prompt를 정의한다.
+
+### Prompt
+
+12_Database_Architecture.md — Database 설계
+13_DataPack_System.md — DataPack 시스템
+14_Performance_Optimization.md — 성능 최적화
+
+### Usage
+
+`# 5. Workflow Selection Guide`에서 지정하는 상황(데이터베이스 개편, 성능 개선)에 한해 Phase 6(Feature Implementation) 또는 Phase 7(Refactoring) 이후에 수행한다.
+
 ---
 
 ## Phase 8 - Static Verification

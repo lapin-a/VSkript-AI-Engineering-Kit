@@ -218,12 +218,12 @@ AI는 표준 보고서를 생성해야 한다.
 
 보고서는 다음 구조를 따른다.
 
-- Summary
-- Evidence
+- Executive Summary
 - Findings
-- Risks
+- Evidence
+- Risk Assessment
 - Recommendations
-- Conclusion
+- Next Steps
 
 ---
 
@@ -283,11 +283,11 @@ VSkript 외 프로젝트에서도 활용할 수 있어야 한다.
 - Required Skills
 - Input
 - Output
-- Rules
 - Workflow
+- Rules
 - Evidence Policy
-- Verification
-- Checklist
+- Verification Policy
+- Quality Checklist
 - Expected Result
 
 ---

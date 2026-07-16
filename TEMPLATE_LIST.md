@@ -53,7 +53,7 @@ Version: 1.0
 | GLOSSARY.md | 용어 사전 | Recommended |
 | QUALITY_GATE.md | 품질 기준 | Required |
 | AI_GUIDELINES.md | AI 행동 규칙 | Required |
-| CONTRIBUTING.md | 기여 절차 | Required |
+| CONTRIBUTING.md | 기여 가이드 | Required |
 | CHANGELOG.md | 변경 이력 | Required |
 
 ---
@@ -265,7 +265,19 @@ Development_Workflow.md
 
 ---
 
-# 17. Summary
+# 17. Document Information
+
+| Item | Value |
+|------|-------|
+| Document | TEMPLATE_LIST.md |
+| Version | 1.0 |
+| Status | Draft |
+| Owner | VSkript AI Engineering Kit |
+| Last Updated | YYYY-MM-DD |
+
+---
+
+# Summary
 
 TEMPLATE_LIST.md는 VSkript AI Engineering Kit의 모든 문서를 관리하는 Master Index이다.
 

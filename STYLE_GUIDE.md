@@ -77,11 +77,11 @@ Version: 1.0
 
 기본 언어
 
-영어
+한국어 (제목 및 표준 용어는 영어 사용)
 
 설명
 
-필요 시 한국어 병기 가능
+Heading, Prompt/Report 표준 용어(예: Purpose, Scope, Evidence Policy 등)는 영어를 유지하고, 설명 본문은 한국어로 작성한다.
 
 ---
 
@@ -168,9 +168,9 @@ Workflow
 6. Rules
 7. Workflow
 8. Evidence Policy
-9. Verification
+9. Verification Policy
 10. Output
-11. Checklist
+11. Quality Checklist
 
 ---
 
@@ -181,7 +181,7 @@ Workflow
 1. Executive Summary
 2. Findings
 3. Evidence
-4. Risks
+4. Risk Assessment
 5. Recommendations
 6. Next Steps
 
@@ -287,7 +287,19 @@ Checklist
 
 ---
 
-# 15. Summary
+# 15. Document Information
+
+| Item | Value |
+|------|-------|
+| Document | STYLE_GUIDE.md |
+| Version | 1.0 |
+| Status | Draft |
+| Owner | VSkript AI Engineering Kit |
+| Last Updated | YYYY-MM-DD |
+
+---
+
+# Summary
 
 STYLE_GUIDE.md는 VSkript AI Engineering Kit의 문서 및 프롬프트 작성 규칙을 정의한다.
 

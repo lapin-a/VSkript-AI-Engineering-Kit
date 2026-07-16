@@ -373,6 +373,7 @@ scripts/
 | Version | 1.0 |
 | Status | Draft |
 | Owner | VSkript AI Engineering Kit |
+| Last Updated | YYYY-MM-DD |
 
 ---
 

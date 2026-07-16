@@ -232,15 +232,10 @@
 모든 보고서는 아래 구조를 따른다.
 
 1. Executive Summary
-
 2. Findings
-
 3. Evidence
-
-4. Risks
-
+4. Risk Assessment
 5. Recommendations
-
 6. Next Steps
 
 ---
@@ -277,8 +272,8 @@
 - Workflow
 - Rules
 - Evidence Policy
-- Verification
-- Checklist
+- Verification Policy
+- Quality Checklist
 
 ---
 

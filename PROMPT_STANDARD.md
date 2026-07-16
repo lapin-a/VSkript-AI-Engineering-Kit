@@ -305,6 +305,7 @@ Generate Report
 | PARTIALLY VERIFIED | 일부 확인 |
 | NEEDS RUNTIME TEST | 실행 필요 |
 | ISSUE | 문제 발견 |
+| NOT APPLICABLE | 해당 없음 |
 
 ---
 
@@ -352,52 +353,19 @@ Prompt 실행 후 반드시 확인한다.
 # Prompt Name
 
 ## Purpose
-
-...
-
 ## Scope
-
-...
-
 ## Role
-
-...
-
 ## Required Skills
-
-...
-
 ## Context
-
-...
-
 ## Inputs
-
-...
-
+## Expected Outputs
+## Constraints
 ## Rules
-
-...
-
 ## Workflow
-
-...
-
 ## Evidence Policy
-
-...
-
-## Verification
-
-...
-
-## Expected Output
-
-...
-
+## Verification Policy
 ## Quality Checklist
-
-...
+## Completion Criteria
 ```
 
 ---
