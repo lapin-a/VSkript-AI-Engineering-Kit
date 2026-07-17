@@ -4,6 +4,8 @@
 
 > Global Rules and Engineering Standards
 
+Version: 1.0
+
 ---
 
 # 1. Purpose
@@ -103,7 +105,7 @@
 
 - Completion
 - Hover
-- Signature
+- Signature Help
 - Definition
 - References
 
@@ -267,20 +269,22 @@
 
 # 9. Prompt Standards
 
-모든 Prompt는 아래 구조를 따른다.
+모든 Prompt는 다음 구조를 따른다. 상세 정의는 PROMPT_STANDARD.md를 기준으로 한다.
 
 - Purpose
 - Scope
 - Role
 - Required Skills
-- Input
-- Output
-- Workflow
+- Context
+- Inputs
+- Expected Outputs
+- Constraints
 - Rules
+- Workflow
 - Evidence Policy
 - Verification Policy
 - Quality Checklist
-- Expected Result
+- Completion Criteria
 
 ---
 
@@ -343,7 +347,7 @@ AI는 다음 행동을 수행한다.
 2. PROJECT.md
 3. REQUIREMENTS.md
 4. WORKFLOW.md
-5. PROMPT_STANDARD.md / REPORT_STANDARD.md / STYLE_GUIDE.md / QUALITY_GATE.md / DIRECTORY.md / TEMPLATE_LIST.md / GLOSSARY.md
+5. AI_GUIDELINES.md / PROMPT_STANDARD.md / REPORT_STANDARD.md / STYLE_GUIDE.md / QUALITY_GATE.md / DIRECTORY.md / TEMPLATE_LIST.md / GLOSSARY.md
 6. Prompt Files
 7. Templates
 8. Reports

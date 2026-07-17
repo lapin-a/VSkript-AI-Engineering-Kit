@@ -148,11 +148,11 @@ Workflow
 
 | Term | Definition |
 |------|------------|
-| Provider | LSP 기능 제공 모듈 |
-| Registry | 등록 시스템 |
-| Manifest | 메타데이터 |
-| DataPack | 개별 데이터 패키지 |
-| Adapter | 호환 계층 |
+| Provider | LSP 기능을 제공하는 모듈 |
+| Registry | 설치된 DataPack 목록 |
+| Manifest | DataPack 메타데이터 |
+| DataPack | 개별 애드온 문법 데이터 패키지 |
+| Adapter | 호환성 계층 |
 
 ---
 
@@ -164,26 +164,35 @@ Workflow
 2. Scope
 3. Role
 4. Required Skills
-5. Input
-6. Output
-7. Workflow
-8. Rules
-9. Evidence Policy
-10. Verification Policy
-11. Quality Checklist
+5. Context
+6. Inputs
+7. Expected Outputs
+8. Constraints
+9. Rules
+10. Workflow
+11. Evidence Policy
+12. Verification Policy
+13. Quality Checklist
+14. Completion Criteria
 
 ---
 
 # 9. Report Style
 
-모든 보고서는 아래 순서를 따른다.
+모든 보고서는 아래 순서를 따른다. 상세 정의는 REPORT_STANDARD.md를 기준으로 한다.
 
 1. Executive Summary
-2. Findings
-3. Evidence
-4. Risk Assessment
-5. Recommendations
-6. Next Steps
+2. Scope
+3. Inputs
+4. Methodology
+5. Findings
+6. Evidence
+7. Impact Analysis
+8. Risk Assessment
+9. Recommendations
+10. Verification Result
+11. Next Steps
+12. Appendix
 
 ---
 

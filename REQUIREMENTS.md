@@ -4,6 +4,8 @@
 
 > Functional and Non-Functional Requirements
 
+Version: 1.0
+
 ---
 
 # 1. Purpose
@@ -155,7 +157,7 @@ Before / After 프로젝트를 비교한다.
 
 - Completion
 - Hover
-- Signature
+- Signature Help
 - Definition
 - References
 - Diagnostics
@@ -166,7 +168,7 @@ Before / After 프로젝트를 비교한다.
 
 ---
 
-## FR-009 Runtime Verification
+## FR-009 Runtime Test
 
 ### Requirements
 
@@ -281,20 +283,22 @@ VSkript 외 프로젝트에서도 활용할 수 있어야 한다.
 
 # 5. Prompt Requirements
 
-모든 Prompt는 다음 구조를 따른다.
+모든 Prompt는 다음 구조를 따른다. 상세 정의는 PROMPT_STANDARD.md를 기준으로 한다.
 
 - Purpose
 - Scope
 - Role
 - Required Skills
-- Input
-- Output
-- Workflow
+- Context
+- Inputs
+- Expected Outputs
+- Constraints
 - Rules
+- Workflow
 - Evidence Policy
 - Verification Policy
 - Quality Checklist
-- Expected Result
+- Completion Criteria
 
 ---
 

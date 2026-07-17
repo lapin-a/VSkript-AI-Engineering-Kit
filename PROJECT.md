@@ -4,7 +4,9 @@
 
 > A standardized AI engineering framework for developing, analyzing, verifying, and maintaining the VSkript ecosystem.
 
----
+  Version: 1.0
+
+  ---
 
 # 1. Project Overview
 

@@ -4,6 +4,8 @@
 
 > Standard Workflow for AI-Assisted Development, Analysis, Verification, and Maintenance
 
+Version: 1.0
+
 ---
 
 # 1. Purpose
@@ -361,7 +363,7 @@ Runtime Test Checklist
 
 - Completion
 - Hover
-- Signature
+- Signature Help
 - Definition
 - References
 - Build
