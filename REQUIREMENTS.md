@@ -219,11 +219,17 @@ AI는 표준 보고서를 생성해야 한다.
 보고서는 다음 구조를 따른다.
 
 - Executive Summary
+- Scope
+- Inputs
+- Methodology
 - Findings
 - Evidence
+- Impact Analysis
 - Risk Assessment
 - Recommendations
+- Verification Result
 - Next Steps
+- Appendix
 
 ---
 

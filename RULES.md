@@ -232,11 +232,17 @@
 모든 보고서는 아래 구조를 따른다.
 
 1. Executive Summary
-2. Findings
-3. Evidence
-4. Risk Assessment
-5. Recommendations
-6. Next Steps
+2. Scope
+3. Inputs
+4. Methodology
+5. Findings
+6. Evidence
+7. Impact Analysis
+8. Risk Assessment
+9. Recommendations
+10. Verification Result
+11. Next Steps
+12. Appendix
 
 ---
 
@@ -274,6 +280,7 @@
 - Evidence Policy
 - Verification Policy
 - Quality Checklist
+- Expected Result
 
 ---
 
@@ -340,6 +347,7 @@ AI는 다음 행동을 수행한다.
 6. Prompt Files
 7. Templates
 8. Reports
+
 ---
 
 # 14. Definition of Success

@@ -145,7 +145,7 @@ Completed
 - References
 - Diagnostics
 
-### Runtime Verification
+### Runtime Test
 
 - VSCode 실행
 - Extension 활성화

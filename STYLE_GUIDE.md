@@ -165,11 +165,11 @@ Workflow
 3. Role
 4. Required Skills
 5. Input
-6. Rules
+6. Output
 7. Workflow
-8. Evidence Policy
-9. Verification Policy
-10. Output
+8. Rules
+9. Evidence Policy
+10. Verification Policy
 11. Quality Checklist
 
 ---

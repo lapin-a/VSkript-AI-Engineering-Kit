@@ -55,6 +55,7 @@ Version: 1.0
 | AI_GUIDELINES.md | AI 행동 규칙 | Required |
 | CONTRIBUTING.md | 기여 가이드 | Required |
 | CHANGELOG.md | 변경 이력 | Required |
+| LICENSE | 라이선스 명시 | Required |
 
 ---
 

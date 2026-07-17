@@ -467,11 +467,6 @@ Runtime Test Checklist
 - Runtime Test가 필요한 항목은 반드시 분리한다.
 - 모든 결과에는 코드 근거(Evidence)를 포함한다.
 
-### Prompt
-
-​```
-10_Implementation.md
-​```
 
 Database Architecture(12_Database_Architecture.md), DataPack System(13_DataPack_System.md),
 Performance Optimization(14_Performance_Optimization.md)은
