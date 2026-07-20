@@ -1,4 +1,4 @@
-# QUALITY_GATE.md
+# QUALITY_GATE.md 
 
 # VSkript AI Engineering Kit
 

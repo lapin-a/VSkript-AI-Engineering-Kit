@@ -1,270 +1,178 @@
 # PROJECT.md
 
-# VSkript AI Engineering Kit
+# VSkript Data Platform
 
-> A standardized AI engineering framework for developing, analyzing, verifying, and maintaining the VSkript ecosystem.
-
-  Version: 1.0
-
-  ---
-
-# 1. Project Overview
-
-## Introduction
-
-VSkript AI Engineering Kit는 VSkript 및 VSkript Database 프로젝트를 대상으로 하는 표준 AI 개발 프레임워크입니다.
-
-본 프로젝트는 단순한 프롬프트 모음집(Prompt Collection)이 아니라, AI와 협업하여 프로젝트를 분석하고 개발하며 검증하는 전 과정을 표준화하기 위한 엔지니어링 시스템입니다.
-
-이 프레임워크는 GPT, Claude, Gemini, Codex, Cursor, Windsurf, Copilot 등 다양한 AI 모델에서 동일한 수준의 품질과 일관된 결과를 얻는 것을 목표로 합니다.
+Version: 2.0 (Draft)
 
 ---
 
-# 2. Vision
+# 1. Vision
 
-AI를 소프트웨어 개발의 보조 도구가 아닌 **표준 개발 파트너(Standard Engineering Partner)** 로 활용할 수 있는 개발 환경을 구축한다.
+전 세계 Skript 생태계를 위한 표준 Grammar Data Platform을 구축한다.
 
-궁극적으로는 VSkript 프로젝트뿐만 아니라 다른 오픈소스 프로젝트에도 적용 가능한 AI Engineering Framework로 확장하는 것을 목표로 한다.
-
----
-
-# 3. Mission
-
-본 프로젝트의 핵심 목표는 다음과 같다.
-
-- 프로젝트 분석 표준화
-- 아키텍처 검토 표준화
-- 기능 구현 절차 표준화
-- 코드 검증 자동화
-- 코드 감사(Code Audit) 체계 구축
-- 데이터베이스 설계 표준화
-- AI 보고서 품질 향상
-- AI 결과의 재현성 확보
+모든 Skript Runtime은 동일한 Grammar DataPack을 재사용하며, 필요한 데이터만 선택적으로 다운로드하여 사용할 수 있어야 한다.
 
 ---
 
-# 4. Project Goals
+# 2. Mission
 
-## Primary Goals
+VSkript Data Platform의 목적은 SkriptHub 및 다양한 Addon 프로젝트의 문법 데이터를 수집하고, 이를 표준화된 Canonical Dataset으로 관리하여 DataPack 형태로 배포하는 것이다.
 
-- AI가 프로젝트 전체를 이해한 후 작업하도록 한다.
-- 분석 결과의 신뢰성을 높인다.
-- 코드 기반(Evidence-Based) 분석을 수행한다.
-- 추측에 의존하지 않는 개발 환경을 구축한다.
-- 기능 추가 및 리팩터링 절차를 표준화한다.
+이를 통해 유지보수 가능하고 확장 가능한 Grammar Distribution Platform을 제공한다.
 
 ---
 
-## Secondary Goals
+# 3. Background
 
-- 프로젝트 문서를 자동 생성할 수 있도록 지원한다.
-- AI 결과물의 일관성을 유지한다.
-- 신규 참여자의 프로젝트 이해를 돕는다.
-- 유지보수 비용을 절감한다.
+현재 Skript 생태계는 다음과 같은 문제를 가지고 있다.
 
----
+- 문법 데이터가 여러 저장소에 분산되어 있다.
+- Addon마다 데이터 형식이 다르다.
+- 업데이트 추적이 어렵다.
+- VSCode Extension이 전체 데이터를 포함해야 한다.
+- 다국어 지원이 제한적이다.
 
-# 5. Scope
-
-## Included
-
-본 프로젝트는 다음 영역을 포함한다.
-
-### Analysis
-
-- Project Analysis
-- Architecture Review
-- Dependency Analysis
-- Performance Analysis
-
-### Development
-
-- Feature Implementation
-- Refactoring
-- Database Architecture
-- DataPack System
-- Performance Optimization
-
-### Verification
-
-- Static Verification
-- Functional Verification
-- Runtime Test
-- Regression Test
-- Code Audit
-- Security Review
-- Final Report
-
-### Documentation
-
-- Prompt Standards
-- Templates
-- Guidelines
-- Checklists
-- Workflow Documentation
+본 프로젝트는 이러한 문제를 해결하기 위해 시작되었다.
 
 ---
 
-## Excluded
+# 4. Problem Statement
 
-다음은 본 프로젝트의 범위에 포함되지 않는다.
+현재 시스템에서는 다음 문제가 존재한다.
 
-- 실제 VSkript 기능 개발
-- VSCode Extension 구현
-- SkriptHub 데이터 제공
-- 플러그인 개발
-- 프로젝트 배포 자동화 구현
-
-단, 이러한 작업을 지원하기 위한 문서와 프롬프트는 포함한다.
+- 필요한 Addon만 다운로드할 수 없다.
+- 변경 사항만 업데이트할 수 없다.
+- 문법 데이터의 표준 모델이 없다.
+- Runtime마다 데이터를 중복 관리한다.
 
 ---
 
-# 6. Target Users
+# 5. Goals
 
-본 프로젝트는 다음 사용자를 대상으로 한다.
+프로젝트의 목표는 다음과 같다.
 
-- VSkript Maintainers
-- VSkript Contributors
-- Extension Developers
-- Database Maintainers
-- AI-assisted Developers
-- Code Reviewers
-- Technical Writers
-
----
-
-# 7. Supported AI Platforms
-
-본 프로젝트는 특정 AI 모델에 종속되지 않는다.
-
-지원 대상 예시
-
-- ChatGPT
-- Claude
-- Gemini
-- Codex
-- Cursor
-- Windsurf
-- GitHub Copilot
+- SkriptHub 데이터를 수집한다.
+- Canonical Dataset을 구축한다.
+- DataPack을 생성한다.
+- Registry를 구축한다.
+- Runtime에서 필요한 DataPack만 다운로드한다.
+- 변경된 데이터만 업데이트한다.
+- 다국어 Grammar Database를 구축한다.
 
 ---
 
-# 8. Design Principles
+# 6. Non Goals
 
-모든 문서와 프롬프트는 아래 원칙을 따른다.
+본 프로젝트는 다음을 목표로 하지 않는다.
 
-## Evidence First
-
-모든 결론은 실제 프로젝트 구조와 코드에 근거해야 한다.
-
----
-
-## No Guessing
-
-추측으로 기능이나 구조를 가정하지 않는다.
+- Skript Runtime 구현
+- Skript Compiler 개발
+- Plugin Loader 개발
+- SkriptHub 자체 운영
 
 ---
 
-## Project-Oriented
+# 7. Target Users
 
-항상 프로젝트 전체를 먼저 이해한 뒤 작업한다.
+본 프로젝트의 대상은 다음과 같다.
 
----
-
-## Maintainability
-
-장기 유지보수를 고려한 설계를 우선한다.
-
----
-
-## Extensibility
-
-새로운 기능, 모듈, 데이터팩, 문서가 쉽게 추가될 수 있도록 설계한다.
+- VSkript Users
+- VSCode Extension Users
+- Language Server Developers
+- Static Analysis Tools
+- Documentation Generator
+- AI-assisted Development Tools
 
 ---
 
-## Reusability
+# 8. Scope
 
-다른 프로젝트에도 재사용할 수 있도록 범용성을 고려한다.
+프로젝트는 다음 범위를 포함한다.
 
----
-
-# 9. Expected Deliverables
-
-본 프로젝트는 다음 산출물을 생성한다.
-
-## Documentation
-
-- README
-- Architecture Documents
-- Development Guides
-- Workflow Guides
-- Standards
-- Templates
-
-## Prompt Library
-
-- Analysis Prompts
-- Development Prompts
-- Verification Prompts
-
-## Checklists
-
-- Runtime Checklist
-- Release Checklist
-- Code Review Checklist
-
-## Templates
-
-- Issue Report
-- Verification Report
-- Final Report
+- Data Collection
+- Data Normalization
+- Canonical Dataset
+- DataPack Generation
+- Registry
+- Distribution
+- Runtime Loading
+- Localization
+- Version Management
 
 ---
 
-# 10. Success Criteria
+# 9. Success Criteria
 
-다음 조건을 만족하면 프로젝트가 성공한 것으로 판단한다.
+프로젝트는 다음 조건을 만족해야 한다.
 
-- AI가 프로젝트를 올바르게 분석할 수 있다.
-- 동일한 입력에서 일관된 결과를 생성한다.
-- 추측 없는 코드 기반 분석이 가능하다.
-- 프로젝트 참여자가 동일한 워크플로우를 사용할 수 있다.
-- 문서와 프롬프트가 유지보수 가능한 구조를 가진다.
-
----
-
-# 11. Future Roadmap
-
-## Future Roadmap
-
-상세 버전별 로드맵은 ROADMAP.md를 기준으로 한다.
-
-- Version 1.x: Foundation 구축 (Prompt Library, Documentation, Workflow)
-- Version 2.x 이후: ROADMAP.md 참조
+- 필요한 DataPack만 다운로드된다.
+- 모든 Grammar는 Canonical Dataset으로 관리된다.
+- 변경 사항만 업데이트된다.
+- Runtime은 Registry만 참조한다.
+- 동일한 DataPack을 여러 Runtime에서 재사용한다.
 
 ---
 
-# 12. License
+# 10. Core Principles
 
-프로젝트의 라이선스는 별도 LICENSE 문서를 따른다.
+프로젝트는 다음 원칙을 따른다.
+
+- Specification First
+- Source of Truth
+- Evidence First
+- Runtime Independent
+- Data-driven Design
+- Modular Architecture
+- AI Friendly
 
 ---
 
-# 13. Document Information
+# 11. Expected Outcomes
+
+프로젝트가 완료되면 다음이 가능해야 한다.
+
+- Skript 파일을 열면 필요한 Addon이 자동 탐지된다.
+- 필요한 Grammar DataPack만 다운로드된다.
+- 업데이트는 변경된 데이터만 수행된다.
+- 여러 Runtime이 동일한 DataPack을 공유한다.
+- 전 세계 사용자가 동일한 Grammar Database를 사용할 수 있다.
+
+---
+
+# 12. Long-term Roadmap
+
+장기적으로 다음 기능을 목표로 한다.
+
+- Remote Registry
+- CDN Distribution
+- Incremental Synchronization
+- AI-assisted Documentation
+- Multi-language Grammar Database
+- Marketplace Integration
+
+---
+
+# 13. Project Philosophy
+
+VSkript Data Platform은 코드 중심 프로젝트가 아니라 데이터 중심(Data-driven) 플랫폼이다.
+
+모든 Runtime은 Registry와 Canonical Dataset을 기반으로 동작하며, 구현보다 Specification을 우선한다.
+
+---
+
+# 14. Document Information
 
 | Item | Value |
 |------|-------|
 | Document | PROJECT.md |
-| Version | 1.0 |
+| Version | 2.0 |
 | Status | Draft |
-| Owner | VSkript AI Engineering Kit |
-| Last Updated | YYYY-MM-DD |
+| Owner | VSkript Data Platform |
 
 ---
 
-# Summary
+# 15. Summary
 
-VSkript AI Engineering Kit는 AI를 활용한 프로젝트 분석, 개발, 검증, 유지보수 과정을 표준화하기 위한 엔지니어링 프레임워크이다.
+VSkript Data Platform은 SkriptHub 데이터를 표준화하여 Canonical Dataset으로 관리하고, DataPack 기반으로 배포하는 Grammar Distribution Platform이다.
 
-본 프로젝트는 단순한 프롬프트 모음이 아닌, 프로젝트 전반에 걸친 AI 협업 표준을 제공하는 것을 목표로 한다.
+최종 목표는 사용자가 프로젝트를 열면 필요한 Addon만 자동으로 탐지하고 필요한 Grammar DataPack만 다운로드하여 사용할 수 있는 자동화된 다국어 데이터 플랫폼을 구축하는 것이다.

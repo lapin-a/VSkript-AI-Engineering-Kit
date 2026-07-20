@@ -1,6 +1,6 @@
 # DIRECTORY.md
 
-# Directory Structure
+# VSkript Data Platform Directory Standard
 
 > VSkript Data Platform
 
@@ -12,208 +12,166 @@ Status: Draft
 
 # 1. Purpose
 
-본 문서는 VSkript Data Platform의 표준 디렉터리 구조를 정의한다.
+본 문서는 VSkript Data Platform 프로젝트의 표준 디렉터리 구조를 정의한다.
 
-모든 프로젝트 구성 요소는 본 문서에서 정의한 구조를 따라야 한다.
+모든 구현은 본 문서에서 정의한 디렉터리 구조를 기준으로 구성한다.
+
+Directory Structure는 프로젝트의 Architecture를 반영하며,
+모든 컴포넌트는 자신의 책임에 맞는 위치에 존재해야 한다.
 
 ---
 
-# 2. Principles
+# 2. Scope
+
+본 문서는 다음 항목을 정의한다.
+
+- Source Directory
+- Data Directory
+- Build Directory
+- Runtime Directory
+- Documentation Directory
+- Specification Directory
+- Test Directory
+
+구현 세부사항은 각 Specification에서 정의한다.
+
+---
+
+# 3. Design Principles
 
 디렉터리는 다음 원칙을 따른다.
 
 - Separation of Concerns
-- Independent Components
-- Canonical Dataset
-- Data First
 - Specification First
+- Data First
+- Runtime Independence
+- Modular Organization
 
 ---
 
-# 3. Top Level Structure
+# 4. Top Level Structure
 
 ```text
 VSkript-Data-Platform/
 
-├── docs/
-├── specs/
-├── registry/
-├── sources/
-├── datasets/
-├── datapacks/
-├── builder/
+├── src/
+├── data/
+├── build/
 ├── runtime/
-├── tools/
-├── scripts/
+├── docs/
+├── SPEC/
 ├── tests/
+├── scripts/
 ├── assets/
-└── examples/
-```
-
----
-
-# 4. docs/
-
-프로젝트 문서를 저장한다.
-
-```text
-docs/
-
-├── PROJECT.md
-├── REQUIREMENTS.md
-├── ARCHITECTURE.md
-├── DIRECTORY.md
-├── CONTRIBUTING.md
-├── CHANGELOG.md
+├── tools/
+├── package.json
+├── tsconfig.json
 └── README.md
 ```
 
 ---
 
-# 5. specs/
-
-Specification 문서를 저장한다.
+# 5. Source Directory
 
 ```text
-specs/
+src/
 
-├── SPEC-0001
-├── SPEC-0002
-├── ...
-```
-
-Specification은 프로젝트의 공식 설계 문서이다.
-
----
-
-# 6. registry/
-
-Registry 데이터를 저장한다.
-
-```text
-registry/
-
-├── addons/
-├── languages/
-├── datapacks/
-└── manifests/
-```
-
-Registry는 Runtime이 참조하는 공식 Registry이다.
-
----
-
-# 7. sources/
-
-원본 데이터를 저장한다.
-
-예시
-
-```text
-sources/
-
-├── skripthub/
-├── github/
-├── plugins/
-└── local/
-```
-
-Source는 수정하지 않는다.
-
----
-
-# 8. datasets/
-
-정규화된 Canonical Dataset을 저장한다.
-
-```text
-datasets/
-
-├── functions/
-├── events/
-├── expressions/
-├── effects/
-├── types/
-└── classes/
-```
-
-Canonical Dataset은 프로젝트의 Source of Truth이다.
-
----
-
-# 9. datapacks/
-
-빌드된 DataPack을 저장한다.
-
-```text
-datapacks/
-
-├── skript/
-├── skbee/
-├── skrayfall/
-└── ...
-```
-
----
-
-# 10. builder/
-
-DataPack 생성기를 저장한다.
-
-```text
-builder/
-
-├── parser/
+├── collector/
 ├── normalizer/
-├── generator/
-└── validator/
+├── builder/
+├── registry/
+├── runtime/
+├── distribution/
+├── localization/
+└── shared/
 ```
+
+Source는 시스템 구현만 포함한다.
 
 ---
 
-# 11. runtime/
+# 6. Data Directory
 
-Runtime 관련 모듈을 저장한다.
+```text
+data/
+
+├── raw/
+├── normalized/
+├── canonical/
+├── generated/
+└── cache/
+```
+
+모든 데이터는 단계별로 관리한다.
+
+---
+
+# 7. Build Directory
+
+```text
+build/
+
+├── datapacks/
+├── manifests/
+├── language-packs/
+└── registry/
+```
+
+Builder의 결과물만 저장한다.
+
+---
+
+# 8. Runtime Directory
 
 ```text
 runtime/
 
 ├── downloader/
-├── cache/
+├── resolver/
 ├── loader/
-└── resolver/
+├── cache/
+└── workspace/
 ```
 
----
-
-# 12. tools/
-
-프로젝트 관리 도구를 저장한다.
-
-예시
-
-- Registry Builder
-- Migration Tool
-- Validation Tool
+Runtime은 DataPack 로딩만 담당한다.
 
 ---
 
-# 13. scripts/
+# 9. Documentation Directory
 
-자동화 스크립트를 저장한다.
+```text
+docs/
 
-예시
+├── architecture/
+├── guides/
+├── tutorials/
+├── references/
+└── reports/
+```
 
-- Build
-- Publish
-- Update
-- Sync
+모든 문서는 목적별로 분리한다.
 
 ---
 
-# 14. tests/
+# 10. Specification Directory
 
-테스트를 저장한다.
+```text
+SPEC/
+
+├── core/
+├── contracts/
+├── architecture/
+├── runtime/
+├── registry/
+├── datapack/
+└── localization/
+```
+
+모든 Specification은 SPEC 아래에서 관리한다.
+
+---
+
+# 11. Test Directory
 
 ```text
 tests/
@@ -221,84 +179,99 @@ tests/
 ├── unit/
 ├── integration/
 ├── runtime/
-└── regression/
+├── regression/
+└── fixtures/
 ```
 
----
-
-# 15. assets/
-
-정적 리소스를 저장한다.
-
-예시
-
-- Images
-- Icons
-- Logos
+모든 테스트는 목적별로 분리한다.
 
 ---
 
-# 16. examples/
-
-예제 데이터를 저장한다.
-
-예시
-
-- Example DataPack
-- Example Registry
-- Example Dataset
-
----
-
-# 17. Rules
-
-모든 데이터는 다음 흐름을 따른다.
+# 12. Script Directory
 
 ```text
-Source
+scripts/
 
-↓
-
-Dataset
-
-↓
-
-Registry
-
-↓
-
-DataPack
-
-↓
-
-Runtime
+├── build/
+├── release/
+├── update/
+└── validation/
 ```
 
-역방향 변경은 허용하지 않는다.
+자동화 스크립트를 관리한다.
 
 ---
 
-# 18. Directory Responsibilities
+# 13. Asset Directory
 
-| Directory | Responsibility |
-|------------|----------------|
-| docs | Documentation |
-| specs | Specifications |
-| registry | Registry Data |
-| sources | Raw Sources |
-| datasets | Canonical Dataset |
-| datapacks | Build Output |
-| builder | Build System |
-| runtime | Runtime Components |
-| tools | Developer Tools |
-| scripts | Automation |
-| tests | Testing |
-| assets | Resources |
-| examples | Examples |
+```text
+assets/
+
+├── icons/
+├── images/
+├── schemas/
+└── templates/
+```
+
+프로젝트 리소스를 저장한다.
 
 ---
 
-# 19. Document Information
+# 14. Tool Directory
+
+```text
+tools/
+
+├── collector/
+├── validator/
+├── generator/
+└── analyzer/
+```
+
+개발 도구를 관리한다.
+
+---
+
+# 15. Naming Rules
+
+디렉터리 이름은 다음 규칙을 따른다.
+
+- lowercase
+- kebab-case 또는 snake_case 금지
+- 의미가 명확해야 한다.
+- 축약어 사용을 최소화한다.
+
+---
+
+# 16. Responsibilities
+
+각 디렉터리는 하나의 책임만 가진다.
+
+예시
+
+- src → 구현
+- data → 데이터
+- build → 생성물
+- runtime → 실행
+- docs → 문서
+- SPEC → 명세
+
+---
+
+# 17. Future Extensions
+
+향후 다음 디렉터리를 추가할 수 있다.
+
+```text
+plugins/
+examples/
+benchmarks/
+marketplace/
+```
+
+---
+
+# 18. Document Information
 
 | Item | Value |
 |------|-------|
@@ -309,8 +282,8 @@ Runtime
 
 ---
 
-# 20. Summary
+# 19. Summary
 
 DIRECTORY.md는 VSkript Data Platform의 표준 디렉터리 구조를 정의한다.
 
-모든 구현은 본 구조를 기준으로 이루어지며, Source → Dataset → Registry → DataPack → Runtime의 데이터 흐름을 따른다.
+모든 구현은 본 구조를 기준으로 구성되며, Architecture와 책임 분리를 유지하기 위한 기준 문서로 사용된다.

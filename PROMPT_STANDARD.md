@@ -1,4 +1,4 @@
-# PROMPT_STANDARD.md
+# PROMPT_STANDARD.md 
 
 # VSkript AI Engineering Kit
 

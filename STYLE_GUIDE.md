@@ -1,4 +1,4 @@
-# STYLE_GUIDE.md
+# STYLE_GUIDE.md 
 
 # VSkript AI Engineering Kit
 

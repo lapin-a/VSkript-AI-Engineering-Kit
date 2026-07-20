@@ -1,319 +1,193 @@
-# PROJECT.md
-
 # VSkript Data Platform
 
-Version: 1.0
+> A DataPack-based grammar platform for the Skript ecosystem.
 
-Status: Draft
-
----
-
-# Vision
-
-VSkript Data Platform은 전 세계 Skript 사용자들이 필요한 문법 데이터를 언제 어디서나 빠르고 정확하게 사용할 수 있도록 지원하는 표준 데이터 플랫폼을 구축하는 것을 목표로 한다.
-
-본 프로젝트는 Skript 애드온의 문법 정보를 수집, 정제, 표준화, 배포하는 전체 과정을 자동화하여 누구나 동일한 품질의 데이터를 사용할 수 있도록 하는 것을 비전으로 한다.
+Version: 2.0 (Draft)
 
 ---
 
-# Mission
+# Overview
 
-본 프로젝트의 목적은 다음과 같다.
+VSkript Data Platform은 Skript 생태계의 문법 데이터를 수집, 정규화, 관리 및 배포하기 위한 데이터 플랫폼입니다.
 
-- Skript 생태계의 문법 데이터를 표준화한다.
-- 애드온별 Grammar Data를 독립적으로 관리한다.
-- 변경 사항만 추적하여 효율적으로 업데이트한다.
-- 필요한 데이터만 선택적으로 다운로드할 수 있도록 한다.
-- AI와 사람이 동일한 Specification을 기반으로 작업할 수 있도록 한다.
+이 프로젝트는 SkriptHub와 다양한 Addon 프로젝트의 문법 정보를 표준화하여 하나의 Canonical Dataset으로 관리하고, 사용자가 필요한 데이터만 선택적으로 다운로드하여 사용할 수 있도록 하는 것을 목표로 합니다.
+
+단순한 JSON 저장소가 아니라 DataPack 기반의 Grammar Distribution Platform을 구축하는 것이 프로젝트의 핵심 목적입니다.
 
 ---
 
-# Background
+# Why This Project Exists
 
-현재 Skript 생태계에는 다양한 애드온이 존재하지만,
+현재 Skript 생태계는 다음과 같은 문제를 가지고 있습니다.
 
-- 문법 데이터가 분산되어 있으며,
-- 버전 관리가 어렵고,
-- 업데이트 추적이 어렵고,
-- 다국어 지원이 부족하며,
-- 필요한 애드온만 선택적으로 사용할 수 없는 문제가 존재한다.
+- Addon마다 문법 데이터 형식이 다르다.
+- 문법 정보가 여러 곳에 분산되어 있다.
+- VSCode Extension은 필요한 데이터만 다운로드할 수 없다.
+- 업데이트 추적이 어렵다.
+- 다국어 지원이 제한적이다.
 
-VSkript Data Platform은 이러한 문제를 해결하기 위한 프로젝트이다.
+VSkript Data Platform은 이러한 문제를 해결하기 위해 설계되었습니다.
 
 ---
 
 # Goals
 
-본 프로젝트의 주요 목표는 다음과 같다.
+프로젝트의 주요 목표는 다음과 같습니다.
 
-## 1. Grammar Collection
-
-Skript 및 모든 애드온의 문법 데이터를 자동으로 수집한다.
-
----
-
-## 2. Data Normalization
-
-수집한 데이터를 프로젝트 표준 구조로 변환한다.
+- SkriptHub를 Source Dataset으로 사용한다.
+- 데이터를 Canonical Dataset으로 정규화한다.
+- DataPack 단위로 데이터를 배포한다.
+- 필요한 Addon만 자동 다운로드한다.
+- 변경된 데이터만 업데이트한다.
+- 다양한 Runtime에서 동일한 데이터를 재사용한다.
+- 다국어 Grammar Database를 구축한다.
 
 ---
 
-## 3. Version Tracking
+# Core Features
 
-변경된 데이터만 추적하여 업데이트한다.
-
----
-
-## 4. DataPack Generation
-
-애드온 단위의 DataPack을 생성한다.
-
-예시
-
-```
-skript.json
-
-skbee.json
-
-skript-reflect.json
-
-tuSKe.json
-
-...
-```
+- SkriptHub Data Collection
+- Canonical Data Normalization
+- DataPack Builder
+- Registry Management
+- Dependency Resolution
+- Incremental Updates
+- Localization Support
+- AI-assisted Validation
 
 ---
 
-## 5. Runtime Distribution
+# System Architecture
 
-사용자는 필요한 DataPack만 다운로드하여 사용할 수 있다.
-
----
-
-## 6. Multilingual Grammar Database
-
-모든 Grammar Data는 다국어 지원을 목표로 한다.
-
-예시
-
-- English
-- Korean
-- Japanese
-- Chinese
-
----
-
-# Non Goals
-
-본 프로젝트는 다음을 목표로 하지 않는다.
-
-- Skript Runtime 구현
-- Skript Interpreter 개발
-- IDE 개발
-- Compiler 개발
-- Plugin Loader 개발
-
----
-
-# Core Objectives
-
-프로젝트는 다음 핵심 목표를 가진다.
-
-- Standardization
-- Automation
-- Modularity
-- Maintainability
-- Extensibility
-- Reusability
-
----
-
-# Target Users
-
-본 프로젝트의 주요 사용자는 다음과 같다.
-
-- VSkript Users
-- Skript Plugin Developers
-- VSCode Extension Users
-- Language Server Developers
-- Documentation Generator
-- AI-assisted Developers
-
----
-
-# Core Components
-
-프로젝트는 다음 주요 컴포넌트로 구성된다.
-
-```
-Collector
-
-↓
-
-Normalizer
-
-↓
-
-Registry
-
-↓
-
-Builder
-
-↓
-
-DataPack
-
-↓
-
-Distribution
-
-↓
-
-Runtime
-```
-
-각 컴포넌트는 하나의 책임만 수행한다.
-
----
-
-# High-Level Architecture
-
-전체 시스템은 다음과 같은 흐름으로 동작한다.
-
-```
+```text
 SkriptHub
 
-↓
+    │
 
 Collector
 
-↓
+    │
 
-Raw Data
+Raw Dataset
 
-↓
+    │
 
 Normalizer
 
-↓
+    │
 
-Registry
+Canonical Dataset
 
-↓
+    │
 
 Builder
 
-↓
+    │
 
 DataPack
 
-↓
+    │
+
+Registry
+
+    │
 
 Distribution
 
+    │
+
+VSCode Extension
+CLI
+Language Server
+Documentation Generator
+Static Analyzer
+```
+
+---
+
+# Runtime Workflow
+
+사용자가 프로젝트를 열면 Runtime은 다음 절차를 수행합니다.
+
+```text
+Workspace Open
+
 ↓
 
-User Runtime
+Script Detection
+
+↓
+
+Plugin Detection
+
+↓
+
+Addon Detection
+
+↓
+
+Registry Lookup
+
+↓
+
+Dependency Resolution
+
+↓
+
+Required DataPack Download
+
+↓
+
+Grammar Loading
+
+↓
+
+Language Features Enabled
 ```
+
+필요한 DataPack만 다운로드하며, 이미 설치된 DataPack은 Cache를 사용합니다.
+
+---
+
+# Documentation
+
+프로젝트는 문서 중심(Document-first)으로 개발됩니다.
+
+주요 문서는 다음과 같습니다.
+
+- PROJECT.md
+- REQUIREMENTS.md
+- ARCHITECTURE.md
+- WORKFLOW.md
+- SPEC/
+- DIRECTORY.md
+
+Specification은 프로젝트의 공식 Source of Truth입니다.
 
 ---
 
 # Design Principles
 
-본 프로젝트는 다음 원칙을 따른다.
+프로젝트는 다음 원칙을 따릅니다.
 
 - Specification First
-- Evidence First
-- Registry First
 - Data First
+- Evidence First
+- Runtime Independent
 - Modular Architecture
 - Incremental Update
-- Runtime Independence
-- Deterministic Build
+- AI Friendly
 
 ---
 
-# Source of Truth
+# Long-term Vision
 
-프로젝트의 공식 Source of Truth는 Specification과 Registry이다.
+VSkript Data Platform은 전 세계 Skript 사용자를 위한 표준 Grammar Database를 구축하는 것을 목표로 합니다.
 
-Runtime 또는 Generated Artifact는 Source of Truth가 아니다.
-
-```
-Specification
-
-↓
-
-Registry
-
-↓
-
-Generated DataPack
-```
+사용자는 프로젝트를 열기만 하면 필요한 Addon Grammar를 자동으로 다운로드하여 사용할 수 있으며, 모든 Runtime은 동일한 DataPack을 재사용할 수 있습니다.
 
 ---
 
-# Relationship with AI Engineering Kit
+# License
 
-VSkript AI Engineering Kit는 본 프로젝트를 구축하기 위한 Engineering Framework이다.
-
-역할은 다음과 같이 구분된다.
-
-| Project | Role |
-|----------|------|
-| VSkript AI Engineering Kit | 개발 방법론 |
-| VSkript Data Platform | 실제 구현 대상 |
-
-AI Engineering Kit는 프로젝트의 분석, 설계, 구현, 검증 과정을 표준화하며,
-
-VSkript Data Platform은 그 방법론을 적용하여 구축되는 실제 시스템이다.
-
----
-
-# Long-term Roadmap
-
-장기적으로 다음 기능을 목표로 한다.
-
-- SkriptHub 자동 동기화
-- Incremental Update
-- DataPack Repository
-- Package Manifest
-- Runtime Downloader
-- Online Registry
-- Language Pack
-- AI Search Support
-- Documentation Generator
-- Offline Cache
-
----
-
-# Success Criteria
-
-프로젝트는 다음 조건을 만족할 때 목표를 달성한 것으로 본다.
-
-- 모든 주요 Skript 애드온의 문법 데이터를 수집할 수 있다.
-- 변경 사항만 자동으로 추적할 수 있다.
-- 애드온별 DataPack을 생성할 수 있다.
-- 필요한 DataPack만 선택적으로 다운로드할 수 있다.
-- 다국어 문법 데이터를 제공할 수 있다.
-- AI와 사람이 동일한 Specification을 기반으로 작업할 수 있다.
-
----
-
-# Document Information
-
-| Item | Value |
-|------|-------|
-| Document | PROJECT.md |
-| Version | 1.0 |
-| Status | Draft |
-| Owner | VSkript Data Platform |
-
----
-
-# Summary
-
-VSkript Data Platform은 Skript 생태계의 문법 데이터를 수집, 정제, 표준화, 버전 관리 및 배포하기 위한 데이터 플랫폼이다.
-
-본 프로젝트는 AI Engineering Kit를 기반으로 구축되며, 전 세계 VSkript 사용자가 필요한 DataPack만 효율적으로 다운로드하고 활용할 수 있는 자동화된 다국어 Grammar Database를 제공하는 것을 최종 목표로 한다.
+License information will be defined in a future release.

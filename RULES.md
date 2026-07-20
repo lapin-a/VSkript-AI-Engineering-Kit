@@ -1,4 +1,4 @@
-# RULES.md
+# RULES.md 
 
 # VSkript AI Engineering Kit
 

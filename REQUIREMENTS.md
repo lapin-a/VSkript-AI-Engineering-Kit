@@ -2,9 +2,7 @@
 
 # VSkript Data Platform Requirements
 
-> VSkript Data Platform
-
-Version: 1.0
+Version: 2.0
 
 Status: Draft
 
@@ -12,78 +10,95 @@ Status: Draft
 
 # 1. Purpose
 
-본 문서는 VSkript Data Platform이 충족해야 하는 기능적·비기능적 요구사항을 정의한다.
+본 문서는 VSkript Data Platform이 충족해야 하는 기능적 요구사항(Function Requirements)과
+비기능적 요구사항(Non-functional Requirements)을 정의한다.
 
-모든 설계와 구현은 본 문서를 기준으로 수행한다.
+모든 구현은 본 문서를 기준으로 수행한다.
 
 ---
 
 # 2. Scope
 
-본 요구사항은 다음 범위를 포함한다.
+본 문서는 다음 범위를 정의한다.
 
-- Source Collection
+- Data Collection
 - Data Normalization
 - DataPack Generation
-- Registry Management
+- Registry
 - Distribution
 - Runtime Loading
-- AI-assisted Development
+- Localization
+- Version Management
+
+세부 구현은 Specification에서 정의한다.
 
 ---
 
 # 3. Functional Requirements
 
-## FR-001 Source Collection
+## FR-001 Data Collection
 
-시스템은 SkriptHub 및 지원되는 플러그인 저장소로부터 데이터를 수집할 수 있어야 한다.
+시스템은 SkriptHub 및 지원되는 Addon Repository로부터 문법 데이터를 수집해야 한다.
 
 ---
 
 ## FR-002 Canonical Dataset
 
-수집된 데이터는 하나의 Canonical Dataset으로 정규화되어야 한다.
+수집된 데이터는 Canonical Dataset으로 정규화되어야 한다.
 
-Canonical Dataset은 프로젝트의 Source of Truth이다.
+Canonical Dataset은 프로젝트의 공식 Source of Truth이다.
 
 ---
 
-## FR-003 DataPack Generation
+## FR-003 DataPack Builder
 
-Builder는 Canonical Dataset으로부터 DataPack을 생성해야 한다.
+Canonical Dataset으로부터 DataPack을 생성해야 한다.
+
+각 DataPack은 독립적으로 관리되어야 한다.
 
 ---
 
 ## FR-004 Registry
 
-모든 DataPack은 Registry에 등록되어야 한다.
+모든 DataPack은 Registry를 통해 관리되어야 한다.
 
-Registry는 다음 정보를 관리한다.
+Registry는 다음 정보를 저장한다.
 
 - Identity
 - Version
 - Dependencies
 - Metadata
+- Download Information
 
 ---
 
-## FR-005 Runtime Download
+## FR-005 Runtime Loading
 
-Runtime는 필요한 DataPack만 다운로드해야 한다.
+Runtime은 필요한 DataPack만 다운로드해야 한다.
 
-전체 데이터베이스를 다운로드해서는 안 된다.
+전체 데이터를 다운로드해서는 안 된다.
 
 ---
 
 ## FR-006 Dependency Resolution
 
-Runtime는 DataPack의 Dependency를 자동으로 해결해야 한다.
+Runtime은 Dependency를 자동으로 해결해야 한다.
+
+순환 Dependency는 허용하지 않는다.
 
 ---
 
-## FR-007 Localization
+## FR-007 Incremental Update
 
-시스템은 다국어 데이터를 지원해야 한다.
+변경된 DataPack만 업데이트해야 한다.
+
+전체 재다운로드를 수행해서는 안 된다.
+
+---
+
+## FR-008 Localization
+
+Grammar 데이터는 다국어를 지원해야 한다.
 
 예시
 
@@ -94,195 +109,110 @@ Runtime는 DataPack의 Dependency를 자동으로 해결해야 한다.
 
 ---
 
-## FR-008 Incremental Update
+## FR-009 Version Management
 
-변경된 DataPack만 업데이트할 수 있어야 한다.
+모든 DataPack은 Version을 가져야 한다.
 
----
-
-## FR-009 Manifest
-
-모든 DataPack은 Manifest를 포함해야 한다.
+Registry는 Version을 기준으로 업데이트를 수행한다.
 
 ---
 
 ## FR-010 AI Support
 
-AI는 Canonical Dataset을 기반으로 문서 생성 및 검증을 수행할 수 있어야 한다.
+AI는 다음 작업을 지원할 수 있다.
 
----
-
-# 4. Non-Functional Requirements
-
-## NFR-001 Maintainability
-
-모든 컴포넌트는 독립적으로 유지보수 가능해야 한다.
-
----
-
-## NFR-002 Scalability
-
-새로운 Addon과 Language를 쉽게 추가할 수 있어야 한다.
-
----
-
-## NFR-003 Reusability
-
-DataPack은 Runtime과 독립적으로 재사용 가능해야 한다.
-
----
-
-## NFR-004 Runtime Independence
-
-동일한 DataPack은 다양한 Runtime에서 사용할 수 있어야 한다.
-
-예시
-
-- VSCode Extension
-- CLI
-- Language Server
-- Static Analyzer
-- Documentation Generator
-
----
-
-## NFR-005 Deterministic Build
-
-동일한 입력은 항상 동일한 DataPack을 생성해야 한다.
-
----
-
-## NFR-006 Source of Truth
-
-Canonical Dataset만 공식 데이터로 사용한다.
-
----
-
-## NFR-007 Version Management
-
-모든 DataPack은 Version을 가져야 한다.
-
----
-
-## NFR-008 AI Friendly
-
-데이터 구조는 AI가 쉽게 이해하고 활용할 수 있도록 설계되어야 한다.
-
----
-
-# 5. Data Requirements
-
-데이터는 다음 단계를 거친다.
-
-```text
-Raw Data
-
-↓
-
-Normalized Data
-
-↓
-
-Canonical Dataset
-
-↓
-
-DataPack
-
-↓
-
-Registry
-```
-
----
-
-# 6. Runtime Requirements
-
-Runtime는 다음 기능을 제공해야 한다.
-
-- Script Detection
-- Addon Detection
-- Registry Lookup
-- Dependency Resolution
-- DataPack Download
-- Cache
-- Grammar Loading
-
----
-
-# 7. Distribution Requirements
-
-Distribution은 다음 환경을 지원해야 한다.
-
-- VSCode Extension
-- CLI
-- Language Server
-- Documentation Generator
-- Static Analyzer
-
----
-
-# 8. AI Requirements
-
-AI는 다음 작업을 지원한다.
-
-- Source Analysis
-- Documentation
+- Data Validation
+- Documentation Generation
 - Translation
-- Validation
-- Review
+- Quality Review
 
 AI는 Canonical Dataset을 직접 수정해서는 안 된다.
 
 ---
 
-# 9. Constraints
+# 4. Non-functional Requirements
 
-프로젝트는 다음 제약을 따른다.
+## NFR-001 Modular
 
-- Specification First
-- Registry First
-- Runtime Independent
-- Data-driven Architecture
+모든 구성 요소는 독립적으로 유지되어야 한다.
 
 ---
 
-# 10. Success Criteria
+## NFR-002 Runtime Independent
+
+동일한 DataPack은 여러 Runtime에서 사용할 수 있어야 한다.
+
+---
+
+## NFR-003 Maintainable
+
+데이터 구조는 장기 유지보수가 가능해야 한다.
+
+---
+
+## NFR-004 Scalable
+
+새로운 Addon은 기존 구조를 변경하지 않고 추가할 수 있어야 한다.
+
+---
+
+## NFR-005 Data Driven
+
+모든 Runtime은 데이터를 기반으로 동작해야 한다.
+
+코드에 Grammar를 하드코딩해서는 안 된다.
+
+---
+
+## NFR-006 Evidence First
+
+모든 변경은 실제 데이터에 근거해야 한다.
+
+---
+
+## NFR-007 Specification First
+
+모든 구현은 Specification을 기준으로 수행해야 한다.
+
+---
+
+# 5. Success Criteria
 
 프로젝트는 다음 조건을 만족해야 한다.
 
-- 필요한 DataPack만 다운로드한다.
-- 변경된 데이터만 업데이트한다.
-- Canonical Dataset을 유지한다.
-- Runtime 독립성을 보장한다.
-- AI와 사람이 동일한 데이터를 기반으로 작업한다.
+- 필요한 Addon만 다운로드된다.
+- DataPack이 독립적으로 관리된다.
+- 변경된 데이터만 업데이트된다.
+- 여러 Runtime이 동일한 DataPack을 사용한다.
+- Canonical Dataset이 Source of Truth가 된다.
 
 ---
 
-# 11. Out of Scope
+# 6. Out of Scope
 
-다음 항목은 현재 범위에 포함하지 않는다.
+본 프로젝트는 다음 범위를 포함하지 않는다.
 
-- Runtime 실행 엔진
-- Skript Interpreter 구현
-- Plugin Runtime 수정
-- IDE 구현
+- Skript Runtime 구현
+- Skript Compiler 개발
+- Plugin Loader 개발
+- SkriptHub 운영
 
 ---
 
-# 12. Document Information
+# 7. Document Information
 
 | Item | Value |
 |------|-------|
 | Document | REQUIREMENTS.md |
-| Version | 1.0 |
+| Version | 2.0 |
 | Status | Draft |
 | Owner | VSkript Data Platform |
 
 ---
 
-# 13. Summary
+# 8. Summary
 
-VSkript Data Platform은 SkriptHub와 플러그인 데이터를 수집하여 Canonical Dataset으로 정규화하고, DataPack과 Registry를 생성하여 필요한 데이터만 선택적으로 배포하는 것을 목표로 한다.
+VSkript Data Platform은 Skript Grammar를 표준화된 Canonical Dataset으로 관리하고,
+DataPack 기반으로 배포하는 데이터 플랫폼이다.
 
-모든 구현은 Specification을 기준으로 수행되며, Canonical Dataset을 프로젝트의 공식 Source of Truth로 사용한다.
+모든 Runtime은 Registry를 통해 필요한 DataPack만 선택적으로 다운로드해야 한다.
