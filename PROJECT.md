@@ -2,177 +2,302 @@
 
 # VSkript Data Platform
 
-Version: 2.0 (Draft)
+Version: 2.1 (Draft)
 
 ---
 
 # 1. Vision
 
-전 세계 Skript 생태계를 위한 표준 Grammar Data Platform을 구축한다.
+Build the standard Grammar Data Platform for the global Skript ecosystem.
 
-모든 Skript Runtime은 동일한 Grammar DataPack을 재사용하며, 필요한 데이터만 선택적으로 다운로드하여 사용할 수 있어야 한다.
+The platform enables every Skript Runtime to consume a common set of grammar data through standardized DataPacks generated from a shared Canonical Dataset.
+
+Each Runtime shall download only the DataPacks required for its current workspace, enabling a scalable, modular, and runtime-independent grammar ecosystem.
+
+### Concept Flow
+```
+Grammar Sources
+↓
+Collection
+↓
+Canonical Dataset
+↓
+Specification
+↓
+DataPack
+↓
+Registry
+↓
+Runtime Consumers
+```
+
+
+The Canonical Dataset is the core asset of the platform.
+
+Every distributable artifact is derived from this dataset.
 
 ---
 
 # 2. Mission
 
-VSkript Data Platform의 목적은 SkriptHub 및 다양한 Addon 프로젝트의 문법 데이터를 수집하고, 이를 표준화된 Canonical Dataset으로 관리하여 DataPack 형태로 배포하는 것이다.
+The mission of the VSkript Data Platform is to collect grammar information from SkriptHub and various Skript Addons, normalize the collected information into a Canonical Dataset, and distribute standardized DataPacks through a Registry.
 
-이를 통해 유지보수 가능하고 확장 가능한 Grammar Distribution Platform을 제공한다.
+The platform exists to establish a reusable, maintainable, and implementation-independent grammar distribution ecosystem.
+
+The AI Engineering Kit is a development framework used to design and evolve the platform.
+
+It is not the product itself.
 
 ---
 
 # 3. Background
 
-현재 Skript 생태계는 다음과 같은 문제를 가지고 있다.
+The current Skript ecosystem suffers from several structural limitations.
 
-- 문법 데이터가 여러 저장소에 분산되어 있다.
-- Addon마다 데이터 형식이 다르다.
-- 업데이트 추적이 어렵다.
-- VSCode Extension이 전체 데이터를 포함해야 한다.
-- 다국어 지원이 제한적이다.
+- Grammar information is distributed across multiple repositories.
+- Each Addon defines its grammar using different formats.
+- Tracking changes across Addons is difficult.
+- Runtime implementations must bundle large amounts of grammar data.
+- Localization support is inconsistent.
+- There is no canonical representation of grammar shared across runtimes.
 
-본 프로젝트는 이러한 문제를 해결하기 위해 시작되었다.
+These limitations make long-term maintenance increasingly difficult.
+
+The VSkript Data Platform addresses these issues through standardization, normalization, and centralized distribution.
 
 ---
 
 # 4. Problem Statement
 
-현재 시스템에서는 다음 문제가 존재한다.
+The existing ecosystem lacks a standardized grammar distribution platform.
 
-- 필요한 Addon만 다운로드할 수 없다.
-- 변경 사항만 업데이트할 수 없다.
-- 문법 데이터의 표준 모델이 없다.
-- Runtime마다 데이터를 중복 관리한다.
+As a result:
+
+- Runtime components cannot selectively download only the required grammar.
+- Incremental grammar updates are difficult.
+- There is no canonical model representing Skript grammar.
+- Grammar knowledge is duplicated across multiple runtimes.
+- Each runtime must solve the same grammar management problems independently.
 
 ---
 
 # 5. Goals
 
-프로젝트의 목표는 다음과 같다.
+The platform aims to achieve the following objectives.
 
-- SkriptHub 데이터를 수집한다.
-- Canonical Dataset을 구축한다.
-- DataPack을 생성한다.
-- Registry를 구축한다.
-- Runtime에서 필요한 DataPack만 다운로드한다.
-- 변경된 데이터만 업데이트한다.
-- 다국어 Grammar Database를 구축한다.
+- Collect grammar information from SkriptHub and community Addons.
+- Normalize collected grammar into a Canonical Dataset.
+- Maintain the Canonical Dataset as the authoritative grammar source.
+- Generate standardized DataPacks from the Canonical Dataset.
+- Publish DataPacks through a Registry.
+- Enable Runtime components to download only the required DataPacks.
+- Support incremental updates by distributing only changed data.
+- Provide a multilingual grammar platform reusable by multiple runtimes.
 
 ---
 
 # 6. Non Goals
 
-본 프로젝트는 다음을 목표로 하지 않는다.
+The project does not aim to build or replace the following systems.
 
-- Skript Runtime 구현
-- Skript Compiler 개발
-- Plugin Loader 개발
-- SkriptHub 자체 운영
+- Skript Runtime
+- Skript Compiler
+- Plugin Loader
+- SkriptHub Service
+- IDE Implementation
+- Language Runtime
+
+The platform focuses exclusively on grammar data management and distribution.
 
 ---
 
 # 7. Target Users
 
-본 프로젝트의 대상은 다음과 같다.
+The platform is intended for:
 
-- VSkript Users
-- VSCode Extension Users
-- Language Server Developers
-- Static Analysis Tools
-- Documentation Generator
-- AI-assisted Development Tools
+- VSkript users
+- VSCode Extension developers
+- Language Server developers
+- CLI developers
+- Static analysis tools
+- Documentation generators
+- AI-assisted development tools
+- Future runtime implementations
 
 ---
 
 # 8. Scope
 
-프로젝트는 다음 범위를 포함한다.
+The project includes:
 
-- Data Collection
+- Grammar Collection
 - Data Normalization
 - Canonical Dataset
+- Grammar Specification
 - DataPack Generation
 - Registry
 - Distribution
 - Runtime Loading
 - Localization
 - Version Management
+- Incremental Synchronization
 
 ---
 
 # 9. Success Criteria
 
-프로젝트는 다음 조건을 만족해야 한다.
+The project is considered successful when:
 
-- 필요한 DataPack만 다운로드된다.
-- 모든 Grammar는 Canonical Dataset으로 관리된다.
-- 변경 사항만 업데이트된다.
-- Runtime은 Registry만 참조한다.
-- 동일한 DataPack을 여러 Runtime에서 재사용한다.
+- Every grammar definition exists within the Canonical Dataset.
+- Runtime components download only the required DataPacks.
+- Grammar updates distribute only changed information.
+- Multiple runtimes reuse identical DataPacks.
+- Registry becomes the single distribution entry point.
+- Grammar data remains implementation-independent.
+- Canonical Dataset serves as the authoritative grammar source.
 
 ---
 
 # 10. Core Principles
 
-프로젝트는 다음 원칙을 따른다.
+The project follows the following principles.
 
 - Specification First
+- Canonical First
 - Source of Truth
 - Evidence First
+- Project First
 - Runtime Independent
 - Data-driven Design
+- Automation Friendly
 - Modular Architecture
-- AI Friendly
+- Reproducible
 
 ---
 
-# 11. Expected Outcomes
+# 11. Source of Truth
 
-프로젝트가 완료되면 다음이 가능해야 한다.
+The VSkript Data Platform establishes explicit Sources of Truth to ensure consistency, traceability, and long-term maintainability.
 
-- Skript 파일을 열면 필요한 Addon이 자동 탐지된다.
-- 필요한 Grammar DataPack만 다운로드된다.
-- 업데이트는 변경된 데이터만 수행된다.
-- 여러 Runtime이 동일한 DataPack을 공유한다.
-- 전 세계 사용자가 동일한 Grammar Database를 사용할 수 있다.
+The ownership of knowledge is defined as follows.
+
+| Knowledge | Source of Truth |
+|-----------|-----------------|
+| Project Vision | PROJECT.md |
+| Project Requirements | REQUIREMENTS.md |
+| System Architecture | ARCHITECTURE.md |
+| Technical Specifications | SPEC Documents |
+| Design Decisions | RFC Documents |
+| Terminology | REFERENCE/GLOSSARY.md |
+| Grammar Data | Canonical Dataset |
+
+No document shall redefine concepts owned by another Source of Truth.
+
+Every project artifact shall either own a concept or reference its authoritative owner.
 
 ---
 
-# 12. Long-term Roadmap
+# 12. Expected Outcomes
 
-장기적으로 다음 기능을 목표로 한다.
+When the platform is complete, the following capabilities shall be available.
+
+- Opening a project automatically identifies required Skript Addons.
+- Only the required Grammar DataPacks are downloaded.
+- Grammar updates are distributed incrementally.
+- Multiple runtimes reuse identical grammar packages.
+- Grammar knowledge remains consistent across every runtime.
+- Users worldwide share the same standardized grammar platform regardless of implementation.
+
+---
+
+# 13. Long-term Roadmap
+
+The platform is designed to evolve over time.
+
+Long-term objectives include:
 
 - Remote Registry
-- CDN Distribution
+- Distributed CDN
 - Incremental Synchronization
-- AI-assisted Documentation
+- Automated Grammar Validation
 - Multi-language Grammar Database
 - Marketplace Integration
+- Third-party Runtime Support
+- Community DataPack Publishing
+- Canonical Dataset Version History
+
+These roadmap items describe future directions and shall not be interpreted as implementation commitments.
 
 ---
 
-# 13. Project Philosophy
+# 14. Project Philosophy
 
-VSkript Data Platform은 코드 중심 프로젝트가 아니라 데이터 중심(Data-driven) 플랫폼이다.
+The VSkript Data Platform is fundamentally a data platform rather than a runtime project.
 
-모든 Runtime은 Registry와 Canonical Dataset을 기반으로 동작하며, 구현보다 Specification을 우선한다.
+Its primary asset is the Canonical Dataset.
+
+Every architecture decision, specification, and implementation shall support the lifecycle of grammar knowledge rather than the lifecycle of individual runtime implementations.
+
+Specifications define the platform.
+
+Implementations realize the specifications.
+
+Runtime components consume the artifacts produced by the platform.
+
+The platform therefore remains implementation-independent while providing a common foundation for every consumer.
 
 ---
 
-# 14. Document Information
+# 15. Document Relationship
+
+This document defines the purpose and direction of the project.
+
+The remaining documents refine this vision.
+
+```
+
+PROJECT.md
+│
+├── REQUIREMENTS.md
+│
+├── ARCHITECTURE.md
+│
+├── SPEC/
+│
+├── RFC/
+│
+├── REFERENCE/
+│
+└── QUALITY/
+
+```
+
+
+This document does not define implementation details.
+
+Implementation decisions belong to Architecture, Specifications, and RFCs.
+
+---
+
+# 16. Document Information
 
 | Item | Value |
 |------|-------|
 | Document | PROJECT.md |
-| Version | 2.0 |
+| Version | 2.1 |
 | Status | Draft |
 | Owner | VSkript Data Platform |
+| Classification | Project Definition |
+| Source of Truth | Project Vision and Direction |
 
 ---
 
-# 15. Summary
+# 17. Summary
 
-VSkript Data Platform은 SkriptHub 데이터를 표준화하여 Canonical Dataset으로 관리하고, DataPack 기반으로 배포하는 Grammar Distribution Platform이다.
+The VSkript Data Platform standardizes grammar knowledge across the Skript ecosystem.
 
-최종 목표는 사용자가 프로젝트를 열면 필요한 Addon만 자동으로 탐지하고 필요한 Grammar DataPack만 다운로드하여 사용할 수 있는 자동화된 다국어 데이터 플랫폼을 구축하는 것이다.
+Its primary objective is to collect grammar information from multiple sources, normalize that information into a Canonical Dataset, and distribute reusable DataPacks through a Registry.
+
+The Canonical Dataset is the platform's core asset and the authoritative source of grammar knowledge.
+
+Every Specification, Runtime, Registry, and DataPack ultimately derives from this shared foundation, ensuring a consistent, reusable, and implementation-independent grammar ecosystem.
