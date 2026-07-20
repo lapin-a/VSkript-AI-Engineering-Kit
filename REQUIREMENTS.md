@@ -1,434 +1,288 @@
 # REQUIREMENTS.md
 
-# VSkript AI Engineering Kit
+# VSkript Data Platform Requirements
 
-> Functional and Non-Functional Requirements
+> VSkript Data Platform
 
 Version: 1.0
+
+Status: Draft
 
 ---
 
 # 1. Purpose
 
-본 문서는 VSkript AI Engineering Kit가 반드시 충족해야 하는 기능적 요구사항과 비기능적 요구사항을 정의한다.
+본 문서는 VSkript Data Platform이 충족해야 하는 기능적·비기능적 요구사항을 정의한다.
 
-모든 Prompt, Template, Workflow 및 문서는 본 요구사항을 기준으로 작성되어야 한다.
+모든 설계와 구현은 본 문서를 기준으로 수행한다.
 
 ---
 
-# 2. Objectives
+# 2. Scope
 
-본 프로젝트는 다음 목표를 달성해야 한다.
+본 요구사항은 다음 범위를 포함한다.
 
-- AI가 프로젝트를 정확하게 분석할 수 있도록 한다.
-- AI의 구현 품질을 표준화한다.
-- 검증 절차를 자동화한다.
-- 코드 감사(Code Audit)를 체계화한다.
-- 보고서 품질을 향상시킨다.
-- AI 결과물의 재현성을 확보한다.
+- Source Collection
+- Data Normalization
+- DataPack Generation
+- Registry Management
+- Distribution
+- Runtime Loading
+- AI-assisted Development
 
 ---
 
 # 3. Functional Requirements
 
-## FR-001 Project Analysis
+## FR-001 Source Collection
 
-### Description
-
-AI는 프로젝트 전체를 분석해야 한다.
-
-### Requirements
-
-- 프로젝트 전체 구조 분석
-- 주요 컴포넌트 분석
-- 데이터 흐름 분석
-- 실행 흐름 분석
-- Provider 구조 분석
-- Build 구조 분석
-
-### Output
-
-- Project Summary
-- Directory Tree
-- Component List
-- Architecture Diagram (텍스트)
+시스템은 SkriptHub 및 지원되는 플러그인 저장소로부터 데이터를 수집할 수 있어야 한다.
 
 ---
 
-## FR-002 Architecture Review
+## FR-002 Canonical Dataset
 
-### Description
+수집된 데이터는 하나의 Canonical Dataset으로 정규화되어야 한다.
 
-프로젝트의 설계를 검토한다.
-
-### Requirements
-
-- Layer 분석
-- Module 분석
-- SOLID 평가
-- 책임 분리
-- 의존성 방향
-- 확장성 평가
+Canonical Dataset은 프로젝트의 Source of Truth이다.
 
 ---
 
-## FR-003 Dependency Analysis
+## FR-003 DataPack Generation
 
-### Description
-
-프로젝트의 의존성을 분석한다.
-
-### Requirements
-
-- Internal Dependency
-- External Dependency
-- Circular Dependency
-- Coupling
-- Cohesion
+Builder는 Canonical Dataset으로부터 DataPack을 생성해야 한다.
 
 ---
 
-## FR-004 Performance Analysis
+## FR-004 Registry
 
-### Description
+모든 DataPack은 Registry에 등록되어야 한다.
 
-성능을 분석한다.
+Registry는 다음 정보를 관리한다.
 
-### Requirements
-
-- Startup Cost
-- Memory Usage
-- Lazy Loading
-- Cache
-- Search Cost
-- JSON Parsing
-- File Loading
+- Identity
+- Version
+- Dependencies
+- Metadata
 
 ---
 
-## FR-005 Feature Implementation
+## FR-005 Runtime Download
 
-### Description
+Runtime는 필요한 DataPack만 다운로드해야 한다.
 
-새로운 기능을 구현한다.
-
-### Requirements
-
-- 기존 구조 유지
-- 영향 범위 분석
-- 변경 이유 설명
-- Adapter 적용 여부 판단
+전체 데이터베이스를 다운로드해서는 안 된다.
 
 ---
 
-## FR-006 Refactoring
+## FR-006 Dependency Resolution
 
-### Requirements
-
-- 코드 중복 제거
-- 구조 개선
-- 가독성 향상
-- 유지보수성 향상
+Runtime는 DataPack의 Dependency를 자동으로 해결해야 한다.
 
 ---
 
-## FR-007 Static Verification
+## FR-007 Localization
 
-### Description
-
-Before / After 프로젝트를 비교한다.
-
-### Requirements
-
-- 수정 파일
-- 신규 파일
-- 삭제 파일
-- 영향 범위
-- API 변경
-- 데이터 흐름 변경
-
----
-
-## FR-008 Functional Verification
-
-### Requirements
-
-다음을 검증한다.
-
-- Completion
-- Hover
-- Signature Help
-- Definition
-- References
-- Diagnostics
-- Commands
-- DataPack
-- Manifest
-- Registry
-
----
-
-## FR-009 Runtime Test
-
-### Requirements
-
-AI는 실제 테스트가 필요한 항목을 구분해야 한다.
+시스템은 다국어 데이터를 지원해야 한다.
 
 예시
 
-- VSCode 실행
-- Extension 활성화
-- Hover 테스트
-- Completion 테스트
-- Plugin Detection
-- DataPack Loading
+- English
+- Korean
+- Japanese
+- Chinese
 
 ---
 
-## FR-010 Code Audit
+## FR-008 Incremental Update
 
-### Requirements
-
-- SOLID
-- Maintainability
-- Scalability
-- Testability
-- Readability
-- Complexity
-- Error Handling
+변경된 DataPack만 업데이트할 수 있어야 한다.
 
 ---
 
-## FR-011 Documentation
+## FR-009 Manifest
 
-AI는 문서를 생성해야 한다.
-
-### Examples
-
-- README
-- Prompt
-- Guide
-- Workflow
-- Template
-- Checklist
+모든 DataPack은 Manifest를 포함해야 한다.
 
 ---
 
-## FR-012 Report Generation
+## FR-010 AI Support
 
-AI는 표준 보고서를 생성해야 한다.
-
-보고서는 다음 구조를 따른다.
-
-- Executive Summary
-- Scope
-- Inputs
-- Methodology
-- Findings
-- Evidence
-- Impact Analysis
-- Risk Assessment
-- Recommendations
-- Verification Result
-- Next Steps
-- Appendix
+AI는 Canonical Dataset을 기반으로 문서 생성 및 검증을 수행할 수 있어야 한다.
 
 ---
 
 # 4. Non-Functional Requirements
 
-## NFR-001 Evidence-Based Analysis
+## NFR-001 Maintainability
 
-모든 결론은 실제 코드와 프로젝트 구조를 근거로 작성해야 한다.
-
-추측은 허용되지 않는다.
+모든 컴포넌트는 독립적으로 유지보수 가능해야 한다.
 
 ---
 
-## NFR-002 Repeatability
+## NFR-002 Scalability
 
-동일한 입력에 대해 동일한 품질의 결과를 생성해야 한다.
-
----
-
-## NFR-003 Maintainability
-
-Prompt와 문서는 장기 유지보수가 가능해야 한다.
+새로운 Addon과 Language를 쉽게 추가할 수 있어야 한다.
 
 ---
 
-## NFR-004 Extensibility
+## NFR-003 Reusability
 
-새로운 Prompt와 Workflow를 쉽게 추가할 수 있어야 한다.
-
----
-
-## NFR-005 Reusability
-
-VSkript 외 프로젝트에서도 활용할 수 있어야 한다.
+DataPack은 Runtime과 독립적으로 재사용 가능해야 한다.
 
 ---
 
-## NFR-006 Readability
+## NFR-004 Runtime Independence
 
-모든 문서는 Markdown 표준을 따른다.
+동일한 DataPack은 다양한 Runtime에서 사용할 수 있어야 한다.
 
----
+예시
 
-## NFR-007 Traceability
-
-모든 결과는 근거를 추적할 수 있어야 한다.
-
----
-
-# 5. Prompt Requirements
-
-모든 Prompt는 다음 구조를 따른다. 상세 정의는 PROMPT_STANDARD.md를 기준으로 한다.
-
-- Purpose
-- Scope
-- Role
-- Required Skills
-- Context
-- Inputs
-- Expected Outputs
-- Constraints
-- Rules
-- Workflow
-- Evidence Policy
-- Verification Policy
-- Quality Checklist
-- Completion Criteria
+- VSCode Extension
+- CLI
+- Language Server
+- Static Analyzer
+- Documentation Generator
 
 ---
 
-# 6. Documentation Requirements
+## NFR-005 Deterministic Build
 
-모든 문서는 다음 정보를 포함한다.
-
-- Title
-- Version
-- Status
-- Purpose
-- Scope
-- Last Updated
+동일한 입력은 항상 동일한 DataPack을 생성해야 한다.
 
 ---
 
-# 7. Verification Requirements
+## NFR-006 Source of Truth
 
-모든 검증은 아래 상태 중 하나로 판정한다.
-
-| Status | Description |
-|---------|-------------|
-| VERIFIED | 코드와 요구사항이 일치함 |
-| PARTIALLY VERIFIED | 일부만 확인됨 |
-| NEEDS RUNTIME TEST | 실행 환경에서 확인 필요 |
-| ISSUE | 문제 발견 |
-| NOT APPLICABLE | 해당 없음 |
-
-모든 판정에는 근거를 포함해야 한다.
+Canonical Dataset만 공식 데이터로 사용한다.
 
 ---
 
-# 8. Quality Requirements
+## NFR-007 Version Management
 
-AI 결과물은 다음 조건을 만족해야 한다.
-
-- 추측 없음
-- 코드 기반 분석
-- 프로젝트 전체 이해
-- 일관된 형식
-- 명확한 근거
-- 재현 가능한 결과
+모든 DataPack은 Version을 가져야 한다.
 
 ---
 
-# 9. Acceptance Criteria
+## NFR-008 AI Friendly
 
-다음 조건을 모두 만족해야 완료로 간주한다.
-
-## Analysis
-
-- 프로젝트 구조 분석 완료
-- 실행 흐름 분석 완료
-- 데이터 흐름 분석 완료
+데이터 구조는 AI가 쉽게 이해하고 활용할 수 있도록 설계되어야 한다.
 
 ---
 
-## Development
+# 5. Data Requirements
 
-- 변경 이유 설명
-- 영향도 분석
-- 구조 유지
+데이터는 다음 단계를 거친다.
 
----
+```text
+Raw Data
 
-## Verification
+↓
 
-- 정적 검증 완료
-- 기능 검증 완료
-- Runtime Test 분리
+Normalized Data
 
----
+↓
 
-## Documentation
+Canonical Dataset
 
-- Markdown 형식 준수
-- 표준 템플릿 사용
-- 버전 정보 포함
+↓
 
----
+DataPack
 
-# 10. Out of Scope
+↓
 
-다음은 본 프로젝트의 범위에 포함되지 않는다.
-
-- 실제 기능 구현 자체
-- 배포 자동화 구현
-- 테스트 코드 작성
-- CI/CD 구축
-
-단, 이를 위한 프롬프트와 문서는 포함한다.
+Registry
+```
 
 ---
 
-# 11. Priority Matrix
+# 6. Runtime Requirements
 
-| Priority | Description |
-|----------|-------------|
-| MUST | 반드시 구현 |
-| SHOULD | 가능한 구현 |
-| COULD | 선택 구현 |
-| WON'T | 현재 제외 |
+Runtime는 다음 기능을 제공해야 한다.
 
----
-
-# 12. Definition of Done
-
-다음 조건을 모두 만족하면 작업이 완료된 것으로 판단한다.
-
-- 요구사항 충족
-- 코드 근거 제시
-- 보고서 작성 완료
-- 검증 완료
-- Runtime Test 필요 여부 명시
-- 품질 기준 충족
+- Script Detection
+- Addon Detection
+- Registry Lookup
+- Dependency Resolution
+- DataPack Download
+- Cache
+- Grammar Loading
 
 ---
 
-# 13. Document Information
+# 7. Distribution Requirements
+
+Distribution은 다음 환경을 지원해야 한다.
+
+- VSCode Extension
+- CLI
+- Language Server
+- Documentation Generator
+- Static Analyzer
+
+---
+
+# 8. AI Requirements
+
+AI는 다음 작업을 지원한다.
+
+- Source Analysis
+- Documentation
+- Translation
+- Validation
+- Review
+
+AI는 Canonical Dataset을 직접 수정해서는 안 된다.
+
+---
+
+# 9. Constraints
+
+프로젝트는 다음 제약을 따른다.
+
+- Specification First
+- Registry First
+- Runtime Independent
+- Data-driven Architecture
+
+---
+
+# 10. Success Criteria
+
+프로젝트는 다음 조건을 만족해야 한다.
+
+- 필요한 DataPack만 다운로드한다.
+- 변경된 데이터만 업데이트한다.
+- Canonical Dataset을 유지한다.
+- Runtime 독립성을 보장한다.
+- AI와 사람이 동일한 데이터를 기반으로 작업한다.
+
+---
+
+# 11. Out of Scope
+
+다음 항목은 현재 범위에 포함하지 않는다.
+
+- Runtime 실행 엔진
+- Skript Interpreter 구현
+- Plugin Runtime 수정
+- IDE 구현
+
+---
+
+# 12. Document Information
 
 | Item | Value |
 |------|-------|
 | Document | REQUIREMENTS.md |
 | Version | 1.0 |
 | Status | Draft |
-| Owner | VSkript AI Engineering Kit |
-| Last Updated | YYYY-MM-DD |
+| Owner | VSkript Data Platform |
 
 ---
 
-# Summary
+# 13. Summary
 
-REQUIREMENTS.md는 VSkript AI Engineering Kit의 모든 프롬프트, 문서, 템플릿 및 워크플로우가 따라야 하는 기능적·비기능적 요구사항을 정의한다. 모든 개발 및 검증 작업은 본 문서를 기준으로 수행되어야 한다.
+VSkript Data Platform은 SkriptHub와 플러그인 데이터를 수집하여 Canonical Dataset으로 정규화하고, DataPack과 Registry를 생성하여 필요한 데이터만 선택적으로 배포하는 것을 목표로 한다.
+
+모든 구현은 Specification을 기준으로 수행되며, Canonical Dataset을 프로젝트의 공식 Source of Truth로 사용한다.

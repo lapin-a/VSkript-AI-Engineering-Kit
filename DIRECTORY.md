@@ -1,384 +1,316 @@
 # DIRECTORY.md
 
-# VSkript AI Engineering Kit
+# Directory Structure
 
-> Standard Directory Structure
+> VSkript Data Platform
 
 Version: 1.0
+
+Status: Draft
 
 ---
 
 # 1. Purpose
 
-본 문서는 VSkript AI Engineering Kit의 표준 디렉터리 구조를 정의한다.
+본 문서는 VSkript Data Platform의 표준 디렉터리 구조를 정의한다.
 
-모든 문서, 프롬프트, 템플릿, 예제 및 체크리스트는 본 구조를 기준으로 관리한다.
-
-목표는 다음과 같다.
-
-- 프로젝트 구조 표준화
-- 유지보수성 향상
-- AI 자동 생성 지원
-- 확장 가능한 구조 제공
+모든 프로젝트 구성 요소는 본 문서에서 정의한 구조를 따라야 한다.
 
 ---
 
-# 2. Design Principles
+# 2. Principles
 
 디렉터리는 다음 원칙을 따른다.
 
-- 기능별 분리
-- 문서와 Prompt 분리
-- 예제와 템플릿 분리
-- 규칙과 체크리스트 분리
-- 버전 관리 용이성 확보
+- Separation of Concerns
+- Independent Components
+- Canonical Dataset
+- Data First
+- Specification First
 
 ---
 
-# 3. Root Structure
+# 3. Top Level Structure
 
 ```text
-VSkript-AI-Engineering-Kit/
+VSkript-Data-Platform/
 
-├── README.md
+├── docs/
+├── specs/
+├── registry/
+├── sources/
+├── datasets/
+├── datapacks/
+├── builder/
+├── runtime/
+├── tools/
+├── scripts/
+├── tests/
+├── assets/
+└── examples/
+```
+
+---
+
+# 4. docs/
+
+프로젝트 문서를 저장한다.
+
+```text
+docs/
+
 ├── PROJECT.md
 ├── REQUIREMENTS.md
-├── WORKFLOW.md
-├── RULES.md
-├── STYLE_GUIDE.md
-├── PROMPT_STANDARD.md
-├── REPORT_STANDARD.md
-├── QUALITY_GATE.md
+├── ARCHITECTURE.md
 ├── DIRECTORY.md
-├── TEMPLATE_LIST.md
-├── ROADMAP.md
-├── GLOSSARY.md
-├── AI_GUIDELINES.md
-├── LICENSE
-├── CHANGELOG.md
 ├── CONTRIBUTING.md
-│
-├── docs/
-├── prompts/
-├── templates/
-├── workflows/
-├── reports/
-├── checklists/
-├── examples/
-├── assets/
-└── scripts/
+├── CHANGELOG.md
+└── README.md
 ```
 
 ---
 
-# 4. Documentation Directory
+# 5. specs/
+
+Specification 문서를 저장한다.
 
 ```text
-docs/
+specs/
 
-├── analysis/
-├── architecture/
-├── development/
-├── verification/
-├── audit/
-├── database/
-├── performance/
-└── reference/
+├── SPEC-0001
+├── SPEC-0002
+├── ...
 ```
 
-설명
-
-| Directory | Purpose |
-|------------|----------|
-| analysis | 프로젝트 분석 문서 |
-| architecture | 구조 설계 |
-| development | 개발 가이드 |
-| verification | 검증 문서 |
-| audit | 코드 감사 |
-| database | Database 설계 |
-| performance | 성능 문서 |
-| reference | 참고 자료 |
+Specification은 프로젝트의 공식 설계 문서이다.
 
 ---
 
-# 5. Prompt Directory
+# 6. registry/
+
+Registry 데이터를 저장한다.
 
 ```text
-prompts/
+registry/
 
-├── analysis/
-├── development/
-├── verification/
-├── reporting/
-├── templates/
-└── shared/
+├── addons/
+├── languages/
+├── datapacks/
+└── manifests/
 ```
+
+Registry는 Runtime이 참조하는 공식 Registry이다.
 
 ---
 
-## Analysis Prompts
+# 7. sources/
+
+원본 데이터를 저장한다.
+
+예시
 
 ```text
-01_Project_Analysis.md
+sources/
 
-02_Architecture_Review.md
-
-03_Dependency_Analysis.md
-
-04_Performance_Analysis.md
+├── skripthub/
+├── github/
+├── plugins/
+└── local/
 ```
+
+Source는 수정하지 않는다.
 
 ---
 
-## Development Prompts
+# 8. datasets/
+
+정규화된 Canonical Dataset을 저장한다.
 
 ```text
-10_Implementation.md
-
-11_Refactoring.md
-
-12_Database_Architecture.md
-
-13_DataPack_System.md
-
-14_Performance_Optimization.md
-```
-
----
-
-## Verification Prompts
-
-```text
-20_Static_Verification.md
-
-21_Functional_Verification.md
-
-22_Runtime_Test.md
-
-23_Regression_Test.md
-
-24_Code_Audit.md
-
-25_Security_Review.md
-
-26_Final_Report.md
-```
-
----
-
-# 6. Templates Directory
-
-```text
-templates/
-
-├── reports/
-├── prompts/
-├── issues/
-├── pull_requests/
-└── releases/
-```
-
----
-
-# 7. Reports Directory
-
-```text
-reports/
-
-├── analysis/
-├── verification/
-├── audit/
-├── performance/
-└── release/
-```
-
----
-
-# 8. Checklists Directory
-
-```text
-checklists/
-
-├── analysis.md
-├── implementation.md
-├── verification.md
-├── runtime.md
-├── release.md
-└── audit.md
-```
-
----
-
-# 9. Examples Directory
-
-```text
-examples/
-
-├── project-analysis/
-├── verification/
-├── reports/
-├── prompts/
-└── workflows/
-```
-
----
-
-# 10. Assets Directory
-
-```text
-assets/
-
-├── diagrams/
-├── images/
-├── icons/
-└── logos/
-```
-
----
-
-# 11. Scripts Directory
-
-```text
-scripts/
-
-├── build/
-├── validation/
-├── formatting/
-└── release/
-```
-
----
-
-# 12. Naming Convention
-
-## Directories
-
-모두 소문자를 사용한다.
-
-예
-
-```text
-analysis
-verification
-templates
-```
-
----
-
-## Markdown Files
-
-Pascal Case를 사용한다.
-
-예
-
-```text
-Project_Analysis.md
-```
-
-Prompt 번호는 두 자리 숫자를 사용한다.
-
-예
-
-```text
-01_Project_Analysis.md
-
-21_Functional_Verification.md
-```
-
----
-
-# 13. Directory Rules
-
-모든 Prompt는 prompts 디렉터리에 저장한다.
-
-모든 예제는 examples에 저장한다.
-
-모든 보고서는 reports에 저장한다.
-
-모든 템플릿은 templates에 저장한다.
-
-문서를 중복 저장하지 않는다.
-
----
-
-# 14. Future Expansion
-
-향후 다음 디렉터리를 추가할 수 있다.
-
-```text
-knowledge-base/
-
-plugins/
-
-automation/
-
-ci/
-
-benchmarks/
-
-translations/
-
 datasets/
+
+├── functions/
+├── events/
+├── expressions/
+├── effects/
+├── types/
+└── classes/
 ```
+
+Canonical Dataset은 프로젝트의 Source of Truth이다.
 
 ---
 
-# 15. Recommended Repository Structure
+# 9. datapacks/
+
+빌드된 DataPack을 저장한다.
 
 ```text
-VSkript-AI-Engineering-Kit/
+datapacks/
 
-docs/
-
-prompts/
-
-templates/
-
-reports/
-
-examples/
-
-checklists/
-
-assets/
-
-scripts/
+├── skript/
+├── skbee/
+├── skrayfall/
+└── ...
 ```
 
 ---
 
-# 16. Quality Checklist
+# 10. builder/
 
-□ Root 구조 준수
+DataPack 생성기를 저장한다.
 
-□ Prompt 분리
+```text
+builder/
 
-□ Template 분리
-
-□ Reports 분리
-
-□ Examples 포함
-
-□ Assets 분리
-
-□ Scripts 분리
+├── parser/
+├── normalizer/
+├── generator/
+└── validator/
+```
 
 ---
 
-# 17. Document Information
+# 11. runtime/
+
+Runtime 관련 모듈을 저장한다.
+
+```text
+runtime/
+
+├── downloader/
+├── cache/
+├── loader/
+└── resolver/
+```
+
+---
+
+# 12. tools/
+
+프로젝트 관리 도구를 저장한다.
+
+예시
+
+- Registry Builder
+- Migration Tool
+- Validation Tool
+
+---
+
+# 13. scripts/
+
+자동화 스크립트를 저장한다.
+
+예시
+
+- Build
+- Publish
+- Update
+- Sync
+
+---
+
+# 14. tests/
+
+테스트를 저장한다.
+
+```text
+tests/
+
+├── unit/
+├── integration/
+├── runtime/
+└── regression/
+```
+
+---
+
+# 15. assets/
+
+정적 리소스를 저장한다.
+
+예시
+
+- Images
+- Icons
+- Logos
+
+---
+
+# 16. examples/
+
+예제 데이터를 저장한다.
+
+예시
+
+- Example DataPack
+- Example Registry
+- Example Dataset
+
+---
+
+# 17. Rules
+
+모든 데이터는 다음 흐름을 따른다.
+
+```text
+Source
+
+↓
+
+Dataset
+
+↓
+
+Registry
+
+↓
+
+DataPack
+
+↓
+
+Runtime
+```
+
+역방향 변경은 허용하지 않는다.
+
+---
+
+# 18. Directory Responsibilities
+
+| Directory | Responsibility |
+|------------|----------------|
+| docs | Documentation |
+| specs | Specifications |
+| registry | Registry Data |
+| sources | Raw Sources |
+| datasets | Canonical Dataset |
+| datapacks | Build Output |
+| builder | Build System |
+| runtime | Runtime Components |
+| tools | Developer Tools |
+| scripts | Automation |
+| tests | Testing |
+| assets | Resources |
+| examples | Examples |
+
+---
+
+# 19. Document Information
 
 | Item | Value |
 |------|-------|
 | Document | DIRECTORY.md |
 | Version | 1.0 |
 | Status | Draft |
-| Owner | VSkript AI Engineering Kit |
-| Last Updated | YYYY-MM-DD |
+| Owner | VSkript Data Platform |
 
 ---
 
-# Summary
+# 20. Summary
 
-DIRECTORY.md는 VSkript AI Engineering Kit의 표준 디렉터리 구조를 정의한다.
+DIRECTORY.md는 VSkript Data Platform의 표준 디렉터리 구조를 정의한다.
 
-모든 문서, 프롬프트, 예제 및 보고서는 본 구조를 기반으로 관리되며, 새로운 기능은 기존 구조를 유지하면서 확장하는 것을 원칙으로 한다.
+모든 구현은 본 구조를 기준으로 이루어지며, Source → Dataset → Registry → DataPack → Runtime의 데이터 흐름을 따른다.
