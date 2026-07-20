@@ -233,23 +233,16 @@ Part 2에서는 Expression Structure와 공통 필드를 정의한다.
 
 # 17. Canonical Structure
 
-모든 Expression Contract는 다음 구조를 따른다.
+Expression Contract의 Canonical Structure는
+Section 8의 Canonical Composition으로 정의된다.
 
-```
-Expression
+Generator, Validator, Serializer,
+Documentation Generator 및
+기타 모든 도구는
+Section 8의 Canonical Composition을
+Expression Contract의 유일한 구조 정의로 사용해야 한다.
 
-├── Identity
-├── Name
-├── Namespace
-├── Parameters
-├── Result Type
-├── Evaluation Context
-├── Attributes
-├── Documentation
-└── Metadata
-```
-
-Generator는 위 구조를 변경해서는 안 된다.
+Generator는 Canonical Composition을 변경해서는 안 된다.
 
 ---
 
@@ -322,22 +315,6 @@ Expression는 정확히 하나의 Result Type을 가진다.
 Result Type은 CONTRACT_TYPE을 참조한다.
 
 Generator는 Result Type을 변경해서는 안 된다.
-
----
-
-# 22. Evaluation Context
-
-Evaluation Context는 Expression가 평가될 수 있는 환경을 정의한다.
-
-예시
-
-- Runtime
-- World
-- Session
-- Tick
-- Player
-
-Evaluation Context는 Runtime 구현이 아니라 Query 가능 조건을 설명하는 메타 정보이다.
 
 ---
 

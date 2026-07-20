@@ -109,9 +109,11 @@ Module
 ├── Identity
 ├── Name
 ├── Namespace
+├── Version
 ├── Imports
 ├── Exports
 ├── Members
+├── Attributes
 ├── Documentation
 └── Metadata
 ```
@@ -179,16 +181,18 @@ Module Contract는 다음 Contract를 참조할 수 있다.
 
 ---
 
-# 14. Aggregate Responsibility
+# 14. Module Responsibility
 
 Module은 포함된 Contract의 실행이나 평가를 담당하지 않는다.
 
 Module의 책임은 다음과 같다.
 
 - Organization
-- Dependency
-- Visibility
-- Packaging
+- Dependency Management
+- Visibility Management
+- Package Organization
+
+Module은 Runtime 동작을 수행하지 않는다.
 
 ---
 
@@ -303,7 +307,6 @@ Imports는 Module이 의존하는 다른 Module을 정의한다.
 
 예시
 
-```
 player
 
 ↓
@@ -313,7 +316,11 @@ entity
 ↓
 
 type
-```
+
+Import는 기본적으로 Module Identity를 기준으로 의존성을 표현한다.
+
+Version 호환 정책(Version Compatibility Policy)은
+별도의 Specification에서 정의한다.
 
 Import는 의존성만 표현하며 Ownership은 변경하지 않는다.
 
@@ -453,7 +460,7 @@ Module의 기본 정책(Default Policy)은 다음과 같다.
 - Export를 통해 공개 범위를 정의한다.
 - Runtime 동작은 수행하지 않는다.
 
-Module은 Aggregate Contract이다.
+Module은 관련 Contract를 조직하고 관리하는 최상위 Organization Contract이다.
 
 ---
 
@@ -479,18 +486,24 @@ Module은 프로젝트 전체의 Language Boundary이며, Registry는 모든 Mod
 
 ---
 
-# 33. Module Registry
+# 33. Registry Integration
 
-모든 Module은 Module Registry를 통해 관리된다.
+모든 Module Contract는 Registry를 통해 관리된다.
 
-```
+Registry는 프로젝트의 공식 Source of Truth이다.
+
+Module Registry는 Registry에 등록된
+Module Contract의 논리적 집합(Logical View)을 의미한다.
+
+Module Registry는
+독립적인 Registry 인스턴스를 의미하지 않는다.
+
 Registry
 
 ├── Module A
 ├── Module B
 ├── Module C
 └── ...
-```
 
 Registry는 Module Identity를 기준으로 관리한다.
 
@@ -568,12 +581,11 @@ Export되지 않은 Member는 외부에서 직접 접근해서는 안 된다.
 
 # 37. Import Rules
 
-Import는 다른 Module의 공개 API를 참조한다.
-
 Import는 다음 원칙을 따른다.
 
 - 순환 Import를 허용하지 않는다.
-- Import는 Module Identity를 기준으로 수행한다.
+- Import는 기본적으로 Module Identity를 기준으로 수행한다.
+- Version 호환 정책은 별도의 Specification에서 정의한다.
 - Import는 Ownership을 변경하지 않는다.
 
 ---
@@ -765,7 +777,11 @@ Resolve Members
 Ready
 ```
 
-복원 이후 Module Contract는 Generator가 사용할 수 있는 상태여야 한다.
+복원 이후 Module Contract는
+
+Registry에 등록 가능한 상태이며,
+
+Generator가 사용할 수 있는 Canonical Model이어야 한다.
 
 ---
 
@@ -971,6 +987,173 @@ Part 5에서는 Best Practices, Anti-Patterns 및 Governance를 정의한다.
 
 ---
 
+## Aggregate
+
+Aggregate는 하나 이상의 Contract를 논리적으로 조직하는
+상위 구조(Logical Organization Unit)를 의미한다.
+
+Aggregate는 Runtime 실행 단위가 아니다.
+
+Aggregate는 Organization, Dependency,
+Visibility, Packaging을 담당한다.
+
+Module Contract는 Aggregate를 표현하는
+대표적인 Contract이다.
+
+Aggregate는 Registry를 통해 관리된다.
+
+---
+
+## Aggregate Root
+
+Aggregate Root는
+Aggregate의 공식 진입점(Canonical Entry Point)이다.
+
+Aggregate 내부의 Contract는
+Aggregate Root를 통해 조직된다.
+
+Generator는 Aggregate Root를 기준으로
+Aggregate를 처리한다.
+
+Module Contract는
+현재 Specification에서 Aggregate Root 역할을 수행한다.
+
+---
+
+## Package
+
+Package는 Contract를 논리적으로 조직하기 위한
+Organization 단위이다.
+
+현재 Specification에서는
+Module Contract가 Package Model을 표현한다.
+
+향후 별도의 Package Contract가 정의될 경우
+Package는 독립적인 Contract로 분리될 수 있다.
+
+---
+
+## Query
+
+Query는 Runtime 상태를 변경하지 않고
+값을 조회하거나 계산하는 호출을 의미한다.
+
+Expression Contract는 Query를 표현하는
+대표적인 Contract이다.
+
+---
+
+## Command
+
+Command는 Runtime 상태를 변경하기 위한
+호출을 의미한다.
+
+Effect Contract는 Command를 표현하는
+대표적인 Contract이다.
+
+---
+
+## Notification
+
+Notification은
+Runtime에서 발생한 사실(Fact)을
+다른 Consumer에게 전달하는 모델이다.
+
+Notification은 Dispatch 기반이며
+Caller 중심의 Invoke Model과 구분된다.
+
+Event Contract는 Notification을 표현한다.
+
+---
+
+## Signature
+
+Signature는
+호출 가능한 Contract를 식별하기 위한
+Canonical Identifier이다.
+
+Signature는 일반적으로
+
+- Name
+- Parameter Types
+- Generic Parameters
+
+의 조합으로 구성된다.
+
+Function Contract는 Signature를 기반으로
+Overload를 구분한다.
+
+---
+
+## Callable Layer
+
+Callable Layer는
+호출 가능한 Contract를 조직하는
+Architecture Layer이다.
+
+Callable Layer는
+
+- Function
+- Expression
+- Effect
+- Event
+
+로 구성된다.
+
+---
+
+## Atomic Layer
+
+Atomic Layer는
+언어의 가장 작은 표현 단위를 정의하는
+Architecture Layer이다.
+
+Atomic Layer는
+
+- Type
+- Parameter
+- Property
+
+로 구성된다.
+
+---
+
+## Object Layer
+
+Object Layer는
+Atomic Layer와 Callable Layer를
+조합하여 객체 구조를 표현한다.
+
+현재 Specification에서는
+Class Contract가 Object Layer를 담당한다.
+
+---
+
+## Aggregation Layer
+
+Aggregation Layer는
+Object Layer를 조직하는
+최상위 Architecture Layer이다.
+
+현재 Specification에서는
+Module Contract가 Aggregation Layer를 담당한다.
+
+---
+
+## Registry View
+
+Registry View는
+Registry에 저장된 특정 Contract 집합을
+논리적으로 표현하는 View이다.
+
+Registry View는
+독립적인 Registry 인스턴스를 의미하지 않는다.
+
+Module Registry는
+Registry View의 한 종류이다.
+
+---
+
 # 60. Overview
 
 본 장에서는 Module Contract의 Governance, Best Practices 및 Language Architecture에서의 역할을 정의한다.
@@ -999,17 +1182,14 @@ Module은 포함된 Contract의 의미를 변경하지 않는다.
 
 ---
 
-# 62. Aggregate Model
+# 62. Module Model
 
-Module은 Aggregate Contract이다.
+Module은
+관련 Contract를 조직하는
+Organization Contract이다.
 
-Module은 다음 책임을 가진다.
-
-- Organization
-- Dependency Management
-- Visibility Management
-- Public API Definition
-- Package Organization
+Module의 책임은
+Section 14(Module Responsibility)를 따른다.
 
 Module은 Runtime 동작을 수행하지 않는다.
 
@@ -1091,14 +1271,16 @@ Module은 프로젝트의 모든 Contract를 조직한다.
 ```
 Module
 
-├── Type
-├── Parameter
-├── Property
-├── Function
-├── Expression
-├── Effect
-├── Event
-└── Class
+├── Classes
+│   ├── Property
+│   ├── Function(Method)
+│   └── Constructor
+│
+├── Functions
+├── Expressions
+├── Effects
+├── Events
+└── Types
 ```
 
 Module은 Contract 간의 관계를 표현하지만 각 Contract의 동작은 변경하지 않는다.

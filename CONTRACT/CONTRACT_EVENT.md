@@ -30,7 +30,13 @@ Generator는 Event Contract를 기반으로 Event Artifact를 생성한다.
 - User Event
 - Extension Event
 
-Event Trigger 및 Runtime Dispatch는 별도의 Specification에서 정의한다.
+본 Contract는 Event의 구조(Structure)와 의미(Semantics)만 정의한다.
+
+Event Trigger,
+Dispatch,
+Subscription,
+Delivery,
+Execution은 별도의 Specification에서 정의한다.
 
 ---
 
@@ -245,23 +251,16 @@ Part 2에서는 Event Structure와 공통 필드를 정의한다.
 
 # 17. Canonical Structure
 
-모든 Event Contract는 다음 구조를 따른다.
+Event Contract의 Canonical Structure는
+Section 8의 Canonical Composition으로 정의된다.
 
-```
-Event
+Generator, Validator, Serializer,
+Documentation Generator 및
+기타 모든 도구는
+Section 8의 Canonical Composition을
+Event Contract의 유일한 구조 정의로 사용해야 한다.
 
-├── Identity
-├── Name
-├── Namespace
-├── Source
-├── Parameters
-├── Context
-├── Attributes
-├── Documentation
-└── Metadata
-```
-
-Generator는 위 구조를 변경해서는 안 된다.
+Generator는 Canonical Composition을 변경해서는 안 된다.
 
 ---
 
@@ -704,11 +703,15 @@ Resolved Event
 
 # 43. Runtime Independence
 
-Event Contract는 특정 Runtime 구현에 의존하지 않는다.
+Event Contract SHALL NOT depend on any specific Runtime implementation.
 
-동일한 Event Contract는 다양한 Runtime에서 사용할 수 있다.
+The same Event Contract SHALL preserve identical semantics across
+different Runtime implementations.
 
-예시
+Runtime implementations SHALL NOT modify the canonical definition
+of the Event Contract.
+
+Examples
 
 - VSCode Extension
 - CLI
@@ -916,21 +919,6 @@ Event Contract는 향후 다음 기능을 지원할 수 있다.
 
 확장은 기존 Generator와의 호환성을 유지해야 한다.
 
----
-
-# 56. Runtime Independence
-
-Event Contract는 특정 Runtime 구현에 의존하지 않는다.
-
-동일한 Event Contract는 다양한 Runtime에서 사용할 수 있다.
-
-예시
-
-- VSCode Extension
-- CLI
-- Documentation Generator
-- Static Analyzer
-- Language Server
 
 ---
 

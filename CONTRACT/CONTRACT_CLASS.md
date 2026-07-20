@@ -36,9 +36,8 @@ Interface와 Enum은 Type Contract에서 정의하며, Class Contract는 실제 
 
 # 3. Definition
 
-Class는 Property와 Function(Method)을 소유하는 객체 모델이다.
-
-Class Contract는 객체의 구조를 정의하며 Runtime 구현을 포함하지 않는다.
+Class는 Property와 Function(Method)를 참조하여
+객체의 구조를 정의하는 객체 모델이다.
 
 ---
 
@@ -100,36 +99,33 @@ Registry
 
 # 8. Class Composition
 
-Class는 다음 요소로 구성된다.
+Class Contract는 다음 요소로 구성된다.
 
-```
 Class
 
+├── Identity
+├── Name
+├── Namespace
 ├── Properties
 ├── Methods
 ├── Constructors
 ├── Base Class
-├── Interfaces
+├── Implemented Interfaces
+├── Attributes
+├── Documentation
 └── Metadata
-```
 
-각 요소는 독립적인 Contract를 참조한다.
+각 요소는 독립적인 Contract를 참조하거나
+Canonical Metadata를 포함한다.
 
 ---
 
 # 9. Property Model
 
-Class는 하나 이상의 Property를 가질 수 있다.
+Class는 하나 이상의 Property를 참조할 수 있다.
 
-모든 Property는 CONTRACT_PROPERTY를 참조한다.
-
-```
-Class
-
-└── Property[]
-```
-
-Class는 Property를 직접 정의하지 않는다.
+모든 Property는
+CONTRACT_PROPERTY를 참조한다.
 
 ---
 
@@ -215,25 +211,19 @@ Part 2에서는 Class Structure와 공통 필드를 정의한다.
 
 # 17. Canonical Structure
 
-모든 Class Contract는 다음 구조를 따른다.
+Class Contract의 Canonical Structure는
+Section 8(Class Composition)으로 정의된다.
 
-```
-Class
+Generator,
+Validator,
+Serializer,
+Documentation Generator 및
+기타 모든 Tool은
 
-├── Identity
-├── Name
-├── Namespace
-├── Properties
-├── Methods
-├── Constructors
-├── Base Class
-├── Implemented Interfaces
-├── Attributes
-├── Documentation
-└── Metadata
-```
+Section 8을
+유일한 Canonical Structure로 사용해야 한다.
 
-Generator는 위 구조를 변경해서는 안 된다.
+Generator는 Canonical Structure를 변경해서는 안 된다.
 
 ---
 
@@ -281,7 +271,7 @@ Namespace는 Identity 생성에도 사용될 수 있다.
 
 # 20. Properties
 
-Class는 0개 이상의 Property를 가진다.
+Class는 0개 이상의 Property를 참조한다.
 
 모든 Property는 CONTRACT_PROPERTY를 참조한다.
 
@@ -299,17 +289,11 @@ Generator는 순서를 변경해서는 안 된다.
 
 # 21. Methods
 
-Class는 0개 이상의 Method를 가진다.
+Class는
+Method Collection을 가진다.
 
-Method는 CONTRACT_FUNCTION을 재사용한다.
-
-```
-Class
-
-└── Function[]
-```
-
-Method의 Signature는 Class 내부에서 유일해야 한다.
+Method의 Signature는
+Class 내부에서 유일해야 한다.
 
 ---
 
@@ -384,7 +368,10 @@ Attributes는 Class의 추가적인 의미를 표현한다.
 - Deprecated
 - Experimental
 
-Attribute는 Class의 의미를 변경하지 않는다.
+Attribute는 Class의 구조적 특성을 표현한다.
+
+Runtime Lifecycle이나 Runtime State는
+Class Contract의 범위에 포함되지 않는다.
 
 ---
 

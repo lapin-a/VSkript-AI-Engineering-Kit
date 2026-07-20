@@ -12,6 +12,9 @@ VSkript AI Engineering Kit는 단순한 Prompt 모음집이 아니라, AI가 프
 - **해결하려는 문제**: AI 모델마다 결과 품질이 달라지고, 추측에 기반한 분석이나 프로젝트 구조를 이해하지 못한 구현이 발생하는 문제를 표준 Workflow와 Rule로 해결한다.
 - **대상 사용자**: VSkript Maintainers, VSkript Contributors, Extension Developers, Database Maintainers, AI-assisted Developers, Code Reviewers, Technical Writers.
 - **주요 특징**: 특정 AI 모델에 종속되지 않으며, ChatGPT, Claude, Gemini, Codex, Cursor, Windsurf, GitHub Copilot 등 다양한 AI 플랫폼에서 동일한 절차와 품질 기준을 적용하는 것을 목표로 한다.
+
+이 프로젝트는 AI가 프로젝트를 이해하고, 구현하고, 검증하고, 문서화하는 전 과정을 일관된 품질 기준으로 수행할 수 있도록 설계되었다.
+
 ---
  
 ## 주요 기능
@@ -58,13 +61,37 @@ DIRECTORY.md는 `docs/`, `prompts/`, `templates/`, `reports/`, `checklists/`, `e
  
 ## Workflow
  
-WORKFLOW.md는 프로젝트 규모와 관계없이 동일한 순서를 유지하는 것을 원칙으로 하는 표준 작업 절차를 정의합니다. 전체 흐름은 다음과 같습니다.
+WORKFLOW는 14개의 Phase를 순서대로 수행하며,
+각 Phase는 이전 Phase의 산출물을 입력(Input)으로 사용한다.
  
 ```text
-Project Analysis → Architecture Review → Dependency Analysis → Performance Analysis
-→ Implementation Planning → Feature Implementation → Refactoring
-→ Static Verification → Functional Verification → Runtime Test → Regression Test
-→ Code Audit → Security Review → Final Report
+Project Analysis
+    ↓
+Architecture Review
+    ↓
+Dependency Analysis
+    ↓
+Performance Analysis
+    ↓
+Implementation Planning
+    ↓
+Feature Implementation
+    ↓
+Refactoring
+    ↓
+Static Verification
+    ↓
+Functional Verification
+    ↓
+Runtime Test
+    ↓
+Regression Test
+    ↓
+Code Audit
+    ↓
+Security Review
+    ↓
+Final Report
 ```
  
 - 각 Phase는 목적(Purpose), 입력(Input), 수행 작업(Tasks), 산출물(Output), 그리고 해당 Phase에 대응하는 Prompt 파일명으로 정의되어 있습니다.
@@ -100,12 +127,13 @@ Project Analysis → Architecture Review → Dependency Analysis → Performance
  
 CONTRIBUTING.md에 따르면, 작업을 시작하기 전에 아래 문서를 먼저 읽어야 합니다.
  
-1. PROJECT.md 확인 — 프로젝트 목표와 범위를 이해한다.
-2. REQUIREMENTS.md 확인 — 충족해야 하는 요구사항을 확인한다.
-3. RULES.md 확인 — AI가 따라야 하는 공통 규칙을 확인한다.
+1. RULES.md 확인 — AI가 따라야 하는 공통 규칙을 확인한다.
+2. PROJECT.md 확인 — 프로젝트 목표와 범위를 이해한다.
+3. REQUIREMENTS.md 확인 — 충족해야 하는 요구사항을 확인한다.
 4. WORKFLOW.md 확인 — 수행할 작업에 해당하는 Workflow 단계와 Workflow Selection Guide를 확인한다.
-5. STYLE_GUIDE.md 확인 — 문서 작성 규칙을 확인한다.
-6. QUALITY_GATE.md 확인 — 작업 완료 기준(Definition of Done)을 확인한다.
+5. AI_GUIDELINES.md 확인 — AI의 행동 원칙(Behavior Policy)을 확인한다.
+6. STYLE_GUIDE.md 확인 — 문서 작성 규칙을 확인한다.
+7. QUALITY_GATE.md 확인 — 작업 완료 기준(Definition of Done)을 확인한다.
 이후 WORKFLOW.md에 정의된 절차(Project Analysis → Architecture Review → … → Final Report)에 따라 작업을 진행하며, 각 단계는 REPORT_STANDARD.md에 정의된 형식으로 결과를 기록합니다.
  
 ---
@@ -158,8 +186,22 @@ RULES.md와 STYLE_GUIDE.md에 정의된 핵심 원칙은 다음과 같습니다.
 - **Maintainability First**: 장기 유지보수를 고려한 설계를 우선한다.
 - **Transparency**: 모든 변경 사항에 대해 변경 목적, 기대 효과, 영향 범위를 설명해야 한다.
 - **Consistency**: 동일한 용어와 형식을 문서 전반에서 일관되게 사용한다.
+
+---
+
+## Design Philosophy
+
+### Specification First
+
+모든 구현은 Specification을 기반으로 수행한다.
+
+Specification은 프로젝트의 공식 Source of Truth이며,
+코드와 문서는 항상 Specification과 일치해야 한다.
+
 ---
  
-## 라이선스
- 
-License information is not provided in this repository.
+## License
+
+This project does not currently define a license.
+
+A license may be added in a future release.

@@ -34,12 +34,13 @@ VSkript AI Engineering Kit에 기여해주셔서 감사합니다.
 
 작업을 시작하기 전에 반드시 다음 문서를 읽어야 합니다.
 
-1. PROJECT.md
-2. REQUIREMENTS.md
-3. RULES.md
+1. RULES.md
+2. PROJECT.md
+3. REQUIREMENTS.md
 4. WORKFLOW.md
-5. STYLE_GUIDE.md
-6. QUALITY_GATE.md
+5. AI_GUIDELINES.md
+6. STYLE_GUIDE.md
+7. QUALITY_GATE.md
 
 ---
 
@@ -96,6 +97,14 @@ Fork Repository
 
 ↓
 
+Read Project Documents
+
+↓
+
+Select Workflow
+
+↓
+
 Create Branch
 
 ↓
@@ -112,7 +121,7 @@ Verify
 
 ↓
 
-Document
+Update Documentation
 
 ↓
 
@@ -174,6 +183,7 @@ PR에는 반드시 포함되어야 한다.
 - 변경 목적
 - 변경 내용
 - 영향 범위
+- 수행한 Workflow Phase
 - Verification 결과
 - 관련 문서 수정 여부
 
@@ -188,6 +198,7 @@ PR에는 반드시 포함되어야 한다.
 - README
 - REQUIREMENTS
 - WORKFLOW
+- DIRECTORY
 - TEMPLATE_LIST
 
 ---
@@ -209,6 +220,7 @@ PR에는 반드시 포함되어야 한다.
 - Static Verification
 - Functional Verification
 - Documentation Review
+- QUALITY_GATE.md의 Definition of Done
 
 필요 시
 
@@ -224,11 +236,15 @@ PR에는 반드시 포함되어야 한다.
 
 □ 추측 없음
 
+□ Workflow Selection 확인
+
 □ 영향도 분석
 
 □ Documentation 수정
 
 □ Prompt Standard 준수
+
+□ GLOSSARY 용어 사용
 
 □ Markdown 검사 완료
 
@@ -236,7 +252,9 @@ PR에는 반드시 포함되어야 한다.
 
 # AI Contribution
 
-AI가 생성한 결과는 반드시 사람이 검토해야 한다.
+AI는 최종 설계 결정을 내리지 않는다.
+
+모든 최종 승인과 판단은 Maintainer가 수행한다.
 
 AI는
 
@@ -270,6 +288,10 @@ Verification
 
 ↓
 
+Quality Gate
+
+↓
+
 Approval
 
 ↓
@@ -295,6 +317,7 @@ Merge
 Issue 작성 시 포함한다.
 
 - Summary
+- Workflow Phase
 - Environment
 - Steps to Reproduce
 - Expected Behavior
@@ -310,6 +333,7 @@ Issue 작성 시 포함한다.
 - Problem
 - Proposal
 - Expected Benefit
+- Affected Documents
 - Alternatives
 - Additional Notes
 
@@ -333,6 +357,8 @@ Issue 작성 시 포함한다.
 
 □ 모든 문서 최신화
 
+□ CONTRACT_AUTHORING_GUIDE 준수
+
 □ Changelog 작성
 
 □ Quality Gate 통과
@@ -345,7 +371,7 @@ Issue 작성 시 포함한다.
 |------|-------|
 | Document | CONTRIBUTING.md |
 | Version | 1.0 |
-| Status | Draft |
+| Status | Stable |
 | Owner | VSkript AI Engineering Kit |
 
 ---
