@@ -1,381 +1,340 @@
-# QUALITY_GATE.md 
+# QUALITY_GATE.md
 
-# VSkript AI Engineering Kit
+# VSkript Data Platform Quality Gate
 
-> Quality Gates & Definition of Done
+> VSkript Data Platform
 
 Version: 1.0
+
+Status: Draft
 
 ---
 
 # 1. Purpose
 
-본 문서는 VSkript AI Engineering Kit의 모든 작업이 충족해야 하는 품질 기준(Quality Gate)을 정의한다.
+본 문서는 VSkript Data Platform에서 수행되는 모든 작업의 품질 기준(Quality Gate)을 정의한다.
 
-모든 프로젝트 분석, 기능 구현, 리팩터링, 검증 및 문서화는 본 문서의 기준을 통과해야 완료로 간주한다.
-
-본 문서는 "Definition of Done(DoD)"의 기준 문서이다.
+모든 구현, 문서, Specification 및 AI 작업은 본 문서의 품질 기준을 충족해야 한다.
 
 ---
 
-# 2. Objectives
+# 2. Scope
 
-Quality Gate의 목표는 다음과 같다.
+본 문서는 다음 대상에 적용된다.
 
-- AI 결과물의 품질 표준화
-- 재현 가능한 작업 보장
-- 근거(Evidence) 기반 결과 생성
-- 검증 가능한 결과 제공
-- 장기 유지보수성 확보
+- Documentation
+- Specification
+- Architecture
+- Source Code
+- DataPack
+- Registry
+- AI-generated Content
+- Prompt
+- Report
 
 ---
 
-# 3. Quality Gate Overview
+# 3. Quality Philosophy
 
-모든 작업은 아래 순서를 통과해야 한다.
+프로젝트는 다음 원칙을 따른다.
+
+- Specification First
+- Evidence First
+- Documentation First
+- Quality Before Quantity
+- Reproducibility
+- Maintainability
+
+---
+
+# 4. Quality Workflow
+
+모든 작업은 다음 절차를 따른다.
 
 ```text
-Project Understanding
-        │
-        ▼
-Architecture Validation
-        │
-        ▼
-Implementation Validation
-        │
-        ▼
+Planning
+
+↓
+
+Implementation
+
+↓
+
 Verification
-        │
-        ▼
-Documentation
-        │
-        ▼
-Final Review
-        │
-        ▼
-Completed
+
+↓
+
+Review
+
+↓
+
+Approval
+
+↓
+
+Release
 ```
 
 ---
 
-# 4. Gate 1 — Project Understanding
+# 5. Quality Levels
 
-## Goal
+품질은 다음 다섯 단계로 평가한다.
 
-프로젝트를 충분히 이해했는가?
-
-### Required
-
-- 프로젝트 구조 분석
-- 주요 모듈 식별
-- 데이터 흐름 분석
-- 실행 흐름 분석
-- 핵심 Provider 확인
-
-### Pass Criteria
-
-- 프로젝트 요약 작성 완료
-- 주요 구조 설명 가능
-- 변경 대상 식별 완료
+| Level | Description |
+|--------|-------------|
+| Excellent | 최고 수준 |
+| Good | 승인 가능 |
+| Acceptable | 조건부 승인 |
+| Needs Improvement | 수정 필요 |
+| Rejected | 승인 불가 |
 
 ---
 
-# 5. Gate 2 — Architecture Validation
+# 6. Verification Categories
 
-## Goal
+검증은 다음 범주로 수행한다.
 
-변경이 기존 구조와 충돌하지 않는가?
-
-### Required
-
-- Layer 확인
-- Module 관계 확인
-- Dependency 분석
-- SOLID 검토
-- 확장성 검토
-
-### Pass Criteria
-
-- 구조 유지
-- 책임 분리 유지
-- 불필요한 결합 없음
+- Structural Verification
+- Functional Verification
+- Runtime Verification
+- Documentation Verification
+- Cross-document Verification
 
 ---
 
-# 6. Gate 3 — Implementation Validation
+# 7. Documentation Quality
 
-## Goal
+문서는 다음 조건을 만족해야 한다.
 
-구현이 요구사항을 충족하는가?
+- 목적이 명확하다.
+- 범위가 정의되어 있다.
+- 용어가 일관된다.
+- Markdown 규칙을 따른다.
+- 최신 상태를 유지한다.
 
-### Required
+---
 
-- 요구사항 반영
-- 변경 이유 설명
-- 영향 범위 분석
-- 기존 기능 유지
+# 8. Specification Quality
 
-### Pass Criteria
+Specification은 다음을 만족해야 한다.
+
+- Canonical Model 정의
+- Validation Rules 존재
+- Runtime 독립성
+- Version 명시
+- Cross Reference 일관성
+
+---
+
+# 9. Architecture Quality
+
+Architecture는 다음을 만족해야 한다.
+
+- 계층 구조 정의
+- 데이터 흐름 정의
+- 책임 분리
+- 확장 가능성
+- Runtime Independence
+
+---
+
+# 10. Source Code Quality
+
+코드는 다음을 만족해야 한다.
+
+- 명확한 책임
+- 작은 함수
+- 낮은 결합도
+- 높은 응집도
+- 테스트 가능성
+
+---
+
+# 11. AI-generated Content
+
+AI가 생성한 결과는 반드시 검토한다.
+
+검토 대상
+
+- 코드
+- 문서
+- Prompt
+- Report
+- Specification
+
+AI 결과는 자동 승인하지 않는다.
+
+---
+
+# 12. Evidence Requirement
+
+모든 결과는 근거를 포함해야 한다.
+
+허용되는 근거
+
+- Source Code
+- Documentation
+- Specification
+- Runtime Result
+- Test Result
+
+---
+
+# 13. Static Verification
+
+정적 검증에서는 다음을 확인한다.
+
+- 문법 오류
+- 구조 오류
+- 의존성
+- 참조 무결성
+
+---
+
+# 14. Functional Verification
+
+기능 검증에서는 다음을 확인한다.
 
 - 요구사항 충족
-- 영향도 문서화
-- 기존 기능 손상 없음
+- 예상 동작
+- 기존 기능 유지
 
 ---
 
-# 7. Gate 4 — Verification
+# 15. Runtime Verification
 
-## Goal
+필요한 경우 Runtime Test를 수행한다.
 
-구현 결과를 검증했는가?
+검증 예시
 
-### Static Verification
+- DataPack Loading
+- Registry Lookup
+- Dependency Resolution
+- Cache Behavior
 
-- 수정 파일 비교
-- 신규 파일 확인
-- 삭제 파일 확인
-- 영향 분석
+---
 
-### Functional Verification
+# 16. Regression Verification
+
+기존 기능이 손상되지 않았음을 확인한다.
+
+예시
 
 - Completion
 - Hover
-- Signature Help
 - Definition
 - References
 - Diagnostics
 
-### Runtime Test
+---
 
-- VSCode 실행
-- Extension 활성화
-- Plugin Detection
-- DataPack Loading
+# 17. Documentation Review
 
-### Pass Criteria
+다음을 확인한다.
 
-- 정적 검증 완료
-- Runtime Test 필요 여부 명시
-- 결과 상태 분류 완료
+- 최신 상태
+- 오탈자
+- 링크
+- 용어
+- 구조
 
 ---
 
-# 8. Gate 5 — Documentation
+# 18. Cross-document Validation
 
-## Goal
+다음 문서와 일관성을 유지해야 한다.
 
-필요한 문서가 모두 작성되었는가?
-
-### Required
-
-- 변경 이유
-- 구조 설명
-- 검증 결과
-- Runtime Checklist
-- 최종 보고서
-
-### Pass Criteria
-
-- Markdown 표준 준수
-- 문서 최신화
-- 버전 정보 포함
+- PROJECT.md
+- REQUIREMENTS.md
+- ARCHITECTURE.md
+- WORKFLOW.md
+- RULES.md
+- AI_GUIDELINES.md
 
 ---
 
-# 9. Gate 6 — Final Review
+# 19. Definition of Done
 
-## Goal
+작업은 다음 조건을 모두 만족해야 완료된다.
 
-전체 작업을 최종 검토했는가?
-
-### Required
-
-- Evidence 확인
-- Risk 확인
-- Recommendation 작성
-- Next Step 작성
-
-### Pass Criteria
-
-- 모든 Quality Gate 통과
-- 최종 보고서 완료
+- 요구사항 충족
+- 문서 수정 완료
+- 검증 완료
+- Review 완료
+- Quality Gate 통과
 
 ---
 
-# 10. Evidence Requirements
+# 20. Review Checklist
 
-모든 작업은 아래 근거 중 하나 이상을 포함해야 한다.
+검토 전 확인한다.
 
-허용
-
-- Source Code
-- Configuration
-- Build Files
-- Runtime Result
-- Test Result
-- Documentation
-
-허용되지 않음
-
-- 추측
-- 일반적인 경험
-- 확인되지 않은 정보
-
----
-
-# 11. Verification Status
-
-모든 결과는 아래 상태를 사용한다.
-
-| Status | Description |
-|---------|-------------|
-| VERIFIED | 코드 또는 테스트로 확인됨 |
-| PARTIALLY VERIFIED | 일부 확인됨 |
-| NEEDS RUNTIME TEST | 실행 환경에서 확인 필요 |
-| ISSUE | 문제 발견 |
-| NOT APPLICABLE | 해당 없음 |
-
----
-
-# 12. Risk Levels
-
-| Level | Meaning |
-|---------|----------|
-| Critical | 즉시 수정 필요 |
-| High | 높은 위험 |
-| Medium | 개선 권장 |
-| Low | 영향 적음 |
-| None | 문제 없음 |
-
----
-
-# 13. Mandatory Checklist
-
-## Project Analysis
-
-□ 프로젝트 구조 분석 완료
-
-□ 주요 컴포넌트 확인
-
-□ 데이터 흐름 분석
-
-□ 실행 흐름 분석
-
----
-
-## Implementation
+□ 목적 정의
 
 □ 요구사항 충족
 
-□ 영향도 분석
+□ Specification 일치
 
-□ 변경 이유 기록
+□ Architecture 일치
 
-□ 기존 기능 유지
+□ 문서 수정 완료
 
----
+□ Evidence 존재
 
-## Verification
+□ Runtime 영향 확인
 
-□ Static Verification 완료
-
-□ Functional Verification 완료
-
-□ Runtime Test 분리
-
-□ 결과 상태 기록
+□ 기존 기능 영향 분석
 
 ---
 
-## Documentation
+# 21. Approval Policy
 
-□ README 반영
+승인은 다음 기준을 따른다.
 
-□ 관련 문서 수정
-
-□ 최종 보고서 작성
-
----
-
-# 14. Definition of Done
-
-작업은 아래 조건을 모두 만족해야 완료된다.
-
-- 모든 Quality Gate 통과
-- Evidence 제공
-- Verification 완료
-- Documentation 완료
-- Runtime Test 필요 여부 명시
-- Recommendation 작성
+| Result | Approval |
+|---------|----------|
+| Excellent | 승인 |
+| Good | 승인 |
+| Acceptable | 조건부 승인 |
+| Needs Improvement | 수정 후 재검토 |
+| Rejected | 승인 불가 |
 
 ---
 
-# 15. Failure Conditions
+# 22. Release Criteria
 
-다음 중 하나라도 해당되면 완료로 인정하지 않는다.
+릴리즈 전 다음 조건을 만족해야 한다.
 
-- 프로젝트 분석 없이 구현
-- Evidence 없음
-- Verification 없음
-- Runtime Test 누락
-- 영향도 분석 없음
-- 문서 미작성
-- 요구사항 미충족
+- 모든 Verification 완료
+- 모든 Review 완료
+- Documentation 최신화
+- CHANGELOG 업데이트
+- Quality Gate 통과
 
 ---
 
-# 16. Continuous Improvement
+# 23. Continuous Improvement
 
-Quality Gate는 프로젝트 발전에 따라 지속적으로 개선한다.
+프로젝트는 지속적으로 품질을 개선한다.
 
-변경 시 반드시 다음 문서를 함께 검토한다.
-
-- REQUIREMENTS.md
-- WORKFLOW.md
-- RULES.md
-- REPORT_STANDARD.md
+품질 기준은 새로운 요구사항에 따라 업데이트될 수 있다.
 
 ---
 
-# 17. Metrics
+# 24. Summary
 
-품질 측정을 위해 다음 지표를 사용한다.
+Quality Gate는 VSkript Data Platform의 모든 결과물이 일정 수준 이상의 품질을 유지하도록 보장하는 공식 검증 기준이다.
 
-| Metric | Target |
-|---------|--------|
-| Evidence Coverage | 100% |
-| Verification Coverage | 100% |
-| Documentation Coverage | 100% |
-| Prompt Compliance | 100% |
-| Rule Compliance | 100% |
+모든 구현과 문서는 본 문서의 기준을 충족한 경우에만 승인 및 릴리즈될 수 있다.
 
 ---
 
-# 18. Exit Criteria
-
-모든 Gate를 통과하고 아래 조건을 만족하면 작업을 종료한다.
-
-- 품질 기준 충족
-- 보고서 제출
-- 문서 업데이트
-- 후속 작업 제안
-
----
-
-# 19. Document Information
+# Document Information
 
 | Item | Value |
 |------|-------|
 | Document | QUALITY_GATE.md |
 | Version | 1.0 |
 | Status | Draft |
-| Owner | VSkript AI Engineering Kit |
-| Last Updated | YYYY-MM-DD |
-
----
-
-# Summary
-
-QUALITY_GATE.md는 VSkript AI Engineering Kit의 모든 작업에 적용되는 품질 기준과 완료 조건(Definition of Done)을 정의한다.
-
-모든 프로젝트 분석, 개발, 검증 및 문서화는 본 문서의 Quality Gate를 통과해야 완료로 인정되며, 이를 통해 AI 결과물의 신뢰성, 일관성 및 유지보수성을 보장한다.
+| Owner | VSkript Data Platform |

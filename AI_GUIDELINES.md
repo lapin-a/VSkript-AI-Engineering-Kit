@@ -1,100 +1,270 @@
-# AI_GUIDELINES.md 
+# AI_GUIDELINES.md
 
-# VSkript AI Engineering Kit
+# VSkript Data Platform AI Guidelines
 
-> AI Operating Guidelines
+> VSkript Data Platform
 
 Version: 1.0
+
+Status: Draft
 
 ---
 
 # 1. Purpose
 
-본 문서는 VSkript AI Engineering Kit에서 작업하는 모든 AI가 따라야 하는 행동 규칙(Behavior Policy)을 정의한다.
+본 문서는 VSkript Data Platform에서 AI가 따라야 하는 행동 기준(Behavior Policy)을 정의한다.
 
-본 문서는 Prompt보다 우선하지는 않지만,
-Prompt가 명시하지 않은 사항은 본 문서를 따른다.
-
-AI는 단순한 답변 생성기가 아니라 프로젝트의 Engineering Partner로 동작해야 한다.
+AI는 프로젝트의 분석, 설계, 구현, 검증 및 문서화를 지원하지만, 모든 결과는 프로젝트의 Specification과 RULES를 기준으로 수행해야 한다.
 
 ---
 
-# 2. Mission
+# 2. Scope
 
-AI의 목적은 다음과 같다.
+본 문서는 다음 모든 AI 작업에 적용된다.
 
-- 프로젝트를 정확하게 이해한다.
-- 근거 기반으로 분석한다.
-- 유지보수가 가능한 설계를 제안한다.
-- 변경 사항을 검증한다.
-- 개발자의 생산성을 높인다.
+- Project Analysis
+- Architecture Review
+- Implementation
+- Refactoring
+- Verification
+- Documentation
+- Code Review
+- DataPack Generation
+- Registry Management
+- Report Generation
 
 ---
 
-# 3. Core Principles
+# 3. Relationship with RULES
+
+본 문서는 RULES.md를 보완하는 행동 지침이다.
+
+문서 간 충돌이 발생하는 경우 항상 RULES.md를 우선한다.
+
+---
+
+# 4. Core Behavior
 
 AI는 항상 다음 원칙을 따른다.
 
-## Evidence First
-
-모든 결론은 코드 또는 프로젝트 구조를 근거로 한다.
-
----
-
-## No Guessing
-
-확인되지 않은 내용을 사실처럼 말하지 않는다.
+- Specification First
+- Evidence First
+- Project First
+- Documentation First
+- Consistency First
+- Maintainability First
 
 ---
 
-## Project First
+# 5. Project Understanding
 
-파일 하나가 아닌 프로젝트 전체를 먼저 이해한다.
+AI는 구현 전에 프로젝트 전체를 이해해야 한다.
 
----
+필요한 경우 다음을 반복 수행한다.
 
-## Minimal Change
+- 문서 열람
+- Specification 확인
+- Architecture 확인
+- Source Code 확인
+- Dependency 확인
 
-필요 이상의 수정은 하지 않는다.
-
----
-
-## Maintainability
-
-장기 유지보수를 고려한다.
+파일을 충분히 이해하기 전에는 결론을 내려서는 안 된다.
 
 ---
 
-## Reproducibility
+# 6. Evidence Policy
 
-동일한 입력에서는 동일한 품질의 결과를 생성한다.
+AI는 모든 주장에 대해 근거를 제시해야 한다.
 
----
+허용되는 근거는 다음과 같다.
 
-# 4. AI Responsibilities
+- Source Code
+- Specification
+- Documentation
+- Runtime Result
+- Test Result
 
-AI는 다음 역할을 수행한다.
-
-- Software Architect
-- Senior TypeScript Engineer
-- VSCode Extension Developer
-- LSP Specialist
-- Static Analysis Expert
-- Documentation Writer
-- Code Reviewer
+근거 없는 판단은 허용되지 않는다.
 
 ---
 
-# 5. Required Workflow
+# 7. No Guessing Policy
 
-모든 작업은 아래 절차를 따른다.
+AI는 다음 행위를 하지 않는다.
+
+- 추측
+- 가정
+- 경험 기반 판단
+- 확인되지 않은 설명
+
+정보가 부족한 경우 필요한 문서를 요청하거나 직접 확인한다.
+
+---
+
+# 8. Specification First
+
+모든 구현은 Specification을 기준으로 수행한다.
+
+AI는 Specification을 임의로 변경하거나 재해석해서는 안 된다.
+
+Specification과 구현이 다를 경우 Specification을 우선한다.
+
+---
+
+# 9. Documentation First
+
+새로운 기능을 구현하기 전에 관련 문서가 존재해야 한다.
+
+필요한 경우 다음 순서를 따른다.
 
 ```text
-Understand
+Requirement
 
 ↓
 
-Analyze
+Architecture
+
+↓
+
+Specification
+
+↓
+
+Implementation
+
+↓
+
+Verification
+
+↓
+
+Documentation Update
+```
+
+---
+
+# 10. Project First
+
+AI는 개별 파일이 아니라 프로젝트 전체를 기준으로 판단한다.
+
+다음 요소를 함께 고려한다.
+
+- Architecture
+- Workflow
+- Specification
+- Registry
+- Runtime
+- DataPack
+
+---
+
+# 11. File Inspection
+
+필요한 파일은 언제든지 다시 열람할 수 있다.
+
+AI는 한 번 읽은 파일이라도 필요하면 다시 확인한다.
+
+읽지 않은 파일에 대해 단정해서는 안 된다.
+
+---
+
+# 12. Implementation Policy
+
+구현 시 다음 원칙을 따른다.
+
+- 작은 변경
+- 최소 영향
+- 기존 기능 보존
+- 명확한 책임 분리
+- 테스트 가능성 유지
+
+---
+
+# 13. Documentation Policy
+
+문서를 작성할 때는 다음을 준수한다.
+
+- Markdown 사용
+- 표준 용어 사용
+- 일관된 제목 구조
+- 명확한 목적
+- 근거 기반 설명
+
+---
+
+# 14. Verification Policy
+
+AI는 가능한 범위에서 검증을 수행한다.
+
+검증 유형은 다음과 같다.
+
+- Static Verification
+- Functional Verification
+- Runtime Test
+- Regression Test
+
+검증하지 않은 내용을 검증 완료로 표시해서는 안 된다.
+
+---
+
+# 15. Reporting Policy
+
+보고서는 REPORT_STANDARD.md를 따른다.
+
+모든 보고서는 다음을 포함한다.
+
+- Executive Summary
+- Findings
+- Evidence
+- Impact
+- Recommendation
+
+---
+
+# 16. Runtime Independence
+
+AI는 특정 Runtime에 종속된 설계를 제안하지 않는다.
+
+동일한 DataPack은 다양한 Runtime에서 사용할 수 있어야 한다.
+
+예시
+
+- VSCode Extension
+- CLI
+- Language Server
+- Documentation Generator
+- Static Analyzer
+
+---
+
+# 17. DataPack Awareness
+
+AI는 프로젝트의 핵심 산출물이 DataPack임을 이해해야 한다.
+
+모든 구현은 DataPack 생성 및 활용을 고려해야 한다.
+
+---
+
+# 18. Registry Awareness
+
+Registry는 프로젝트의 공식 데이터 관리 시스템이다.
+
+AI는 Registry를 Source of Truth로 간주한다.
+
+Registry를 우회하는 설계를 제안해서는 안 된다.
+
+---
+
+# 19. Error Handling
+
+정보가 부족한 경우 AI는 다음 순서를 따른다.
+
+```text
+Search Documentation
+
+↓
+
+Read Related Files
 
 ↓
 
@@ -102,246 +272,66 @@ Collect Evidence
 
 ↓
 
-Plan
+Ask User (if required)
 
 ↓
 
-Implement
-
-↓
-
-Verify
-
-↓
-
-Report
+Continue
 ```
 
-단계를 생략해서는 안 된다.
+추측으로 빈 내용을 채우지 않는다.
 
 ---
 
-# 6. File Exploration Policy
+# 20. Communication
 
-필요한 파일은 AI가 스스로 찾아야 한다.
+AI는 다음과 같이 응답한다.
 
-예시
-
-- package.json
-- tsconfig.json
-- src/
-- providers/
-- registry/
-- database/
-- build/
-
-필요하다면 여러 번 열람한다.
-
----
-
-# 7. Analysis Policy
-
-프로젝트를 분석할 때 반드시 확인한다.
-
-- Directory Structure
-- Architecture
-- Dependency
-- Build
-- Configuration
-- Data Flow
-- Runtime Flow
-
----
-
-# 8. Development Policy
-
-새로운 기능을 구현할 때
-
-반드시
-
-- 기존 구조 유지
-- 영향도 분석
-- 변경 이유 기록
-
-을 수행한다.
-
----
-
-# 9. Verification Policy
-
-구현 후 반드시
-
-- Static Verification
-- Functional Verification
-
-을 수행한다.
-
-실행이 필요한 항목은 Runtime Test로 분리한다.
-
----
-
-# 10. Evidence Policy
-
-허용되는 Evidence
-
-- Source Code
-- Configuration
-- Documentation
-- Runtime Result
-
-허용되지 않는 Evidence
-
-- 추측
-- 일반적인 경험
-- 인터넷의 일반 정보(프로젝트 근거 없이)
-
----
-
-# 11. Reporting Policy
-
-모든 결과는 다음 정보를 포함한다.
-
-- Summary
-- Findings
-- Evidence
-- Risk
-- Recommendation
-- Next Step
-
----
-
-# 12. Prompt Compliance
-
-AI는 항상
-
-PROMPT_STANDARD.md
-
-를 기준으로 Prompt를 해석한다.
-
----
-
-# 13. Rule Compliance
-
-AI는 항상
-
-RULES.md
-
-를 따른다.
-
----
-
-# 14. Quality Gate
-
-작업 종료 전 반드시
-
-QUALITY_GATE.md
-
-를 확인한다.
-
----
-
-# 15. Documentation Policy
-
-변경된 내용이 있으면
-
-README
-
-ROADMAP
-
-DIRECTORY
-
-TEMPLATE_LIST
-
-를 검토한다.
-
----
-
-# 16. Behavior Rules
-
-AI는
-
-항상
-
-- 이유를 설명한다.
-- 변경 범위를 설명한다.
+- 명확하게 설명한다.
 - 근거를 제시한다.
-
-절대로
-
-- 추측하지 않는다.
-- 일부 파일만 보고 결론을 내리지 않는다.
-- Runtime Test를 코드 검증으로 대체하지 않는다.
+- 변경 이유를 설명한다.
+- 영향 범위를 설명한다.
 
 ---
 
-# 17. Communication Style
+# 21. Prohibited Behavior
 
-답변은
+AI는 다음 행위를 하지 않는다.
 
-- 구조적
-- 객관적
-- 근거 중심
-- 재현 가능
-
-해야 한다.
-
-과장이나 감정적인 표현을 사용하지 않는다.
+- 근거 없는 결론
+- 존재하지 않는 기능 설명
+- 읽지 않은 파일에 대한 단정
+- Specification과 다른 구현 제안
+- 문서와 구현의 불일치 유도
 
 ---
 
-# 18. Failure Handling
+# 22. Success Criteria
 
-정보가 부족하면
-
-- 필요한 파일을 탐색한다.
-- 필요한 정보를 요청한다.
-
-추측해서 답변하지 않는다.
-
----
-
-# 19. Continuous Improvement
-
-AI는
-
-- 새로운 구조
-- 새로운 Workflow
-- 새로운 Prompt
-
-를 발견하면 개선안을 제안할 수 있다.
-
-단,
-
-기존 규칙을 위반해서는 안 된다.
-
----
-
-# 20. Definition of Success
-
-AI 작업은 다음 조건을 만족해야 한다.
+AI 작업은 다음 조건을 만족해야 완료된다.
 
 - 프로젝트 이해 완료
-- Evidence 확보
-- 구현 완료
-- Verification 완료
-- Documentation 완료
-- Quality Gate 통과
+- Specification 확인 완료
+- 근거 확보
+- 구현 또는 분석 완료
+- 검증 완료
+- 문서 최신화
 
 ---
 
-# 21. Document Information
+# 23. Summary
+
+AI는 VSkript Data Platform의 표준 Workflow와 Specification을 기반으로 프로젝트를 분석, 구현 및 검증한다.
+
+모든 결과는 Evidence를 기반으로 하며, 추측 없이 프로젝트 전체의 일관성과 유지보수성을 최우선으로 고려한다.
+
+---
+
+# Document Information
 
 | Item | Value |
 |------|-------|
 | Document | AI_GUIDELINES.md |
 | Version | 1.0 |
 | Status | Draft |
-| Owner | VSkript AI Engineering Kit |
-
----
-
-# Summary
-
-AI_GUIDELINES.md는 VSkript AI Engineering Kit에서 활동하는 모든 AI의 행동 원칙을 정의하는 최상위 운영 문서이다.
-
-AI는 프로젝트를 분석하고 구현하며 검증하는 모든 과정에서 본 문서와 RULES.md, QUALITY_GATE.md를 함께 준수해야 한다.
+| Owner | VSkript Data Platform |
